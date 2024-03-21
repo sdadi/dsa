@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/ConsistantHashSample/.vs
+/ConsistantHashSample/bin/Debug/net8.0
+/ConsistantHashSample/obj
+/fundamental/bin/Debug/net8.0
+/fundamental/obj
