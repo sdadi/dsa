@@ -4,7 +4,9 @@
 
 /.vs
 /ConsistantHashSample/.vs
-/ConsistantHashSample/bin/Debug/net8.0
+/ConsistantHashSample/bin
 /ConsistantHashSample/obj
-/fundamental/bin/Debug/net8.0
+/fundamental/bin/
 /fundamental/obj
+/Intermediate/bin/
+/Intermediate/obj

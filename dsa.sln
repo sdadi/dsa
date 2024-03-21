@@ -5,7 +5,9 @@ VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsistantHashSample", "ConsistantHashSample\ConsistantHashSample.csproj", "{D8E09BA7-2971-4569-A7BF-F10C4841F402}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fundamental", "fundamental\fundamental.csproj", "{C8D5F9E6-C782-45F3-AF54-E2ECF3FF0F3D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fundamental", "fundamental\fundamental.csproj", "{C8D5F9E6-C782-45F3-AF54-E2ECF3FF0F3D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intermediate", "Intermediate\Intermediate.csproj", "{415D7EFD-00BF-456D-AE7F-C68FC4873959}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{C8D5F9E6-C782-45F3-AF54-E2ECF3FF0F3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8D5F9E6-C782-45F3-AF54-E2ECF3FF0F3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8D5F9E6-C782-45F3-AF54-E2ECF3FF0F3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{415D7EFD-00BF-456D-AE7F-C68FC4873959}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{415D7EFD-00BF-456D-AE7F-C68FC4873959}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{415D7EFD-00BF-456D-AE7F-C68FC4873959}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{415D7EFD-00BF-456D-AE7F-C68FC4873959}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
