@@ -3,10 +3,8 @@
 ################################################################################
 
 /.vs
-/ConsistantHashSample/.vs
-/ConsistantHashSample/bin
-/ConsistantHashSample/obj
-/fundamental/bin/
-/fundamental/obj
-/Intermediate/bin/
-/Intermediate/obj
+.vs/
+bin/
+obj/
+
+
