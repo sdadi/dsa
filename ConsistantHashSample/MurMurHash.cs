@@ -6,7 +6,10 @@ namespace ConsistantHashSample
     // refered from https://code.google.com/archive/p/consistent-hash/
     public class MurmurHash2
     {
-        public static UInt32 Hash(Byte[] data) { return Hash(data, 0xc58f1a7b); }
+        public static UInt32 Hash(Byte[] data)
+        {
+            return Hash(data, 0xc58f1a7b);
+        }
         const UInt32 m = 0x5bd1e995; const Int32 r = 24;
 
         [StructLayout(LayoutKind.Explicit)]

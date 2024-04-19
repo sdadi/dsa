@@ -1,6 +1,4 @@
-﻿using System.Xml.Linq;
-
-namespace ConsistantHashSample
+﻿namespace ConsistantHashSample
 {
     public class LRUCacheMain
     {

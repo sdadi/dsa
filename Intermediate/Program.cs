@@ -5,9 +5,15 @@
         static void Main(string[] args)
         {
             //Contest1Run();
-            Contest2Run();
+            //Contest2Run();
+            print(-3);
         }
-
+        static void print(int n)
+        {
+            if (n == 0) return;
+            Console.WriteLine(n);
+            print(n - 1);
+        }
         static void Contest1Run()
         {
             Console.WriteLine("-----     Problem: Toggle Case                       -----");
@@ -22,6 +28,10 @@
             //Contest2.BenjaminAND();
             //Contest2.MaxPossibleSubArraywithDecreasingDishes();
             Contest2.SearchRowWiseColWiseSortedMatrix();
+        }
+        static void test()
+        {
+
         }
     }
 }

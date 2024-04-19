@@ -35,7 +35,16 @@
             //_6Recursion1.PrintNNumbers();
             //_6Recursion1.SimpleRecursion();
             //_6Recursion1.SimpleRecursion1();
-            _6Recursion1.PalindromeRun();
+            //_6Recursion1.PalindromeRun();
+
+            //_7Recursion2.PowerFunction();
+            //_7Recursion2.MagicNumber();
+            //_7Recursion2.KthSymbol();
+            //_7Recursion2.KthSymbolHard();
+
+            //_8Backtracking.OpenCloseRun();
+            //_8Backtracking.AllSubsetRun();
+            _8Backtracking.PermutationsRun();
         }
     }
 }
