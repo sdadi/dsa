@@ -44,7 +44,11 @@
 
             //_8Backtracking.OpenCloseRun();
             //_8Backtracking.AllSubsetRun();
-            _8Backtracking.PermutationsRun();
+            //_8Backtracking.LexographicSubSetRun();
+            //_8Backtracking.PermutationsRun();
+            //_8Backtracking.PermutationsUniqueRun();
+
+            _8Backtracking.PhoneLetterRun();
         }
     }
 }
