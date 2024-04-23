@@ -4,24 +4,23 @@
     {
         public static void PhoneLetterRun()
         {
-            string A = "012";
-            var keyMap = new Dictionary<int, List<char>>
-            {
-                { 0, ['0'] },
-                { 1, ['1'] },
-                { 2, ['a', 'b', 'c'] },
-                { 3, ['d', 'e', 'f'] },
-                { 4, ['g', 'h', 'i'] },
-                { 5, ['j', 'k', 'l'] },
-                { 6, ['m', 'n', 'o'] },
-                { 7, ['p', 'q', 'r','s'] },
-                { 8, ['t', 'u','v'] },
-                { 9, ['w', 'x', 'y','z'] }
-            };
-            var result = new  List<string>();
+            string A = "257";
+            var keyMap = new Dictionary<int, List<char>>();
+            keyMap.Add(0, new List<char>() { '0' });
+            keyMap.Add(1, new List<char>() { '1' });
+            keyMap.Add(2, new List<char>() { 'a', 'b', 'c' });
+            keyMap.Add(3, new List<char>() { 'd', 'e', 'f' });
+            keyMap.Add(4, new List<char>() { 'g', 'h', 'i' });
+            keyMap.Add(5, new List<char>() { 'j', 'k', 'l' });
+            keyMap.Add(6, new List<char>() { 'm', 'n', 'o' });
+            keyMap.Add(7, new List<char>() { 'p', 'q', 'r', 's' });
+            keyMap.Add(8, new List<char>() { 't', 'u', 'v' });
+            keyMap.Add(9, new List<char>() { 'w', 'x', 'y', 'z' });
+
+            var result = new List<string>();
 
             var current = new List<char>();
-            PhoneLetter(A, keyMap,0, current, result);
+            PhoneLetter(A, keyMap, 0, current, result);
 
 
             foreach (var i in result)
@@ -29,30 +28,31 @@
 
         }
 
-        private static void PhoneLetter(string A,Dictionary<int, List<char>> keyMap, int index, List<char> current,List<string> result)
+        private static void PhoneLetter(string A, Dictionary<int, List<char>> keyMap, int index, List<char> current, List<string> result)
         {
-            if(A.Length == current.Count)
+            if (A.Length == current.Count)
             {
-                result.Add(string.Join("",current));
+                result.Add(string.Join("", current));
                 return;
             }
 
             int val = A[index] - '0';
-            for(int i = 0; i < keyMap[val].Count; i++)
+            for (int i = 0; i < keyMap[val].Count; i++)
             {
                 current.Add(keyMap[val][i]);
-                PhoneLetter(A,keyMap,index+1,current,result);
-                current.RemoveAt(current.Count-1);
+                PhoneLetter(A, keyMap, index + 1, current, result);
+                current.RemoveAt(current.Count - 1);
             }
         }
         public static void PermutationsUniqueRun()
         {
-            List<int> A = [1,2,3];
+            List<int> A = [1, 2, 3];
 
             var current = new List<int>();
             var result = new List<List<int>>();
-            Dictionary<int,int> map = new Dictionary<int,int>();
-            foreach (int i in A) {
+            Dictionary<int, int> map = new Dictionary<int, int>();
+            foreach (int i in A)
+            {
                 if (map.ContainsKey(i))
                 {
                     map[i] += 1;
@@ -61,21 +61,21 @@
                     map.Add(i, 1);
             }
 
-            PermutationUnique(A,map, current, result);
+            PermutationUnique(A, map, current, result);
 
             foreach (var i in result)
                 Console.WriteLine($"[{string.Join(" ", i)}]");
 
         }
-        private static void PermutationUnique(List<int> A, Dictionary<int,int> map, List<int> current, List<List<int>> result)
+        private static void PermutationUnique(List<int> A, Dictionary<int, int> map, List<int> current, List<List<int>> result)
         {
             if (A.Count == current.Count)
             {
                 result.Add(new List<int>(current));
                 return;
             }
-            
-            foreach(var i in map.Keys.ToList())
+
+            foreach (var i in map.Keys.ToList())
             {
                 if (map[i] > 0)
                 {
@@ -150,7 +150,7 @@
         {
             result.Add(new List<int>(current));
 
-            for(int i=index;i<A.Count;i++)
+            for (int i = index; i < A.Count; i++)
             {
                 if (i > index && A[i] == A[i - 1]) continue; // Skip duplicates
 
@@ -161,6 +161,49 @@
                 current.RemoveAt(current.Count - 1); // Backtrack
             }
 
+        }
+        public static void SquarefulRun()
+        {
+            List<int> A = [17, 8, 1];
+            A.Sort();
+            var result = new List<List<int>>();
+
+            Squareful(A, 0, result);
+
+            foreach (var item in result)
+            {
+                Console.WriteLine($"[{string.Join(" ", item)}]");
+            }
+        }
+        private static void Squareful(List<int> A, int index, List<List<int>> result)
+        {
+            if (index == A.Count)
+            {
+                result.Add(new List<int>(A));
+                return;
+            }
+
+            for (int K = index; K < A.Count; K++)
+            {
+                if (index != K)
+                {
+                    if (A[index] == A[K]) continue;
+
+                    int sqrt = (int)Math.Sqrt(A[index] + A[K]);
+                    if (sqrt * sqrt != A[index] + A[K])
+                        continue;
+                }
+                SwapSquarefull(A, index, K);
+                Squareful(A, index + 1, result);
+                SwapSquarefull(A, K, index);
+            }
+        }
+        private static void SwapSquarefull(List<int> A, int left, int right)
+        {
+            if (left == right) return;
+            int temp = A[left];
+            A[left] = A[right];
+            A[right] = temp;
         }
         public static void AllSubsetRun()
         {
@@ -184,7 +227,7 @@
 
             current.Add(A[index]);/* include current item */
             AllSubset(A, current, index + 1);
-            current.Remove(A[index]);
+            current.RemoveAt(current.Count - 1);
 
         }
         public static void OpenCloseRun()

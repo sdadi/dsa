@@ -18,6 +18,10 @@
             //_3_ArrayMergeIntervals.NextPermutation();
 
             //_4BitManipulation.FindNthMagicNumber5();
+            //_4BitManipulation.Count1s();
+            //_4BitManipulation.IsPowerOf2();
+            //_4BitManipulation.IsIthbitset();
+            //_4BitManipulation.PossibleSubsets();
 
             //_5BitManipulation.MaxAnd();
             //_5BitManipulation.SingleElementThriceArray();
@@ -48,7 +52,20 @@
             //_8Backtracking.PermutationsRun();
             //_8Backtracking.PermutationsUniqueRun();
 
-            _8Backtracking.PhoneLetterRun();
+            //_8Backtracking.PhoneLetterRun();
+            //_8Backtracking.SquarefulRun();
+
+
+            //_9MathModGCD.PairSumMODm();
+            //_9MathModGCD.MaxGCDAfterDeleteAny();
+
+            //_10MathPermutations.nCrMODm();
+            //_10MathPermutations.PascalTriangle();
+            //_10MathPermutations.PrintPascalTriangle();
+            //_10MathPermutations.ExcelColNumber();
+            //_10MathPermutations.ExcelColTitle();
+            _10MathPermutations.SortedPermutationRank();
+            //_10MathPermutations.ConsecutiveNumbers();
         }
     }
 }
