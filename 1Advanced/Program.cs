@@ -53,7 +53,7 @@
             //_8Backtracking.PermutationsUniqueRun();
 
             //_8Backtracking.PhoneLetterRun();
-            //_8Backtracking.SquarefulRun();
+            _8Backtracking.SquarefulRun();
 
 
             //_9MathModGCD.PairSumMODm();
@@ -69,7 +69,7 @@
             //_10MathPermutations.SortedPermutationRank();
             //_10MathPermutations.ConsecutiveNumbers();
 
-            _11PrimeNumber.PrintAllPrime();
+            //_11PrimeNumber.PrintAllPrime();
             //_11PrimeNumber.PrimeSum();
             //_11PrimeNumber.CountOfDivisors();
             //_11PrimeNumber.LuckyNumber();

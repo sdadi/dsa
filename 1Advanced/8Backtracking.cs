@@ -1,4 +1,6 @@
-﻿namespace _1Advanced
+﻿using System;
+
+namespace _1Advanced
 {
     internal class _8Backtracking
     {
@@ -135,7 +137,7 @@
         /// </summary>
         public static void LexographicSubSetRun()
         {
-            List<int> A = [9, 1, 1];//, -12, -20, 1, 4];
+            List<int> A = [1,2,1,3];//, -12, -20, 1, 4];
             A.Sort();
             var result = new List<List<int>>();
 
@@ -162,9 +164,14 @@
             }
 
         }
+        /// <summary>Given an array of integers A, the array is squareful if for every pair of adjacent elements, 
+        ///            their sum is a perfect square.
+        /// Find and return the number of permutations of A that are squareful.
+        ///            Two permutations A1 and A2 differ if and only if there is some index i such that A1[i] != A2[i].
+        /// </summary>
         public static void SquarefulRun()
         {
-            List<int> A = [17, 8, 1];
+            List<int> A = [36229, 1020, 69, 127, 162, 127];
             A.Sort();
             var result = new List<List<int>>();
 
@@ -185,18 +192,31 @@
 
             for (int K = index; K < A.Count; K++)
             {
-                if (index != K)
+                if (index == K ||  A[index] != A[K])
                 {
-                    if (A[index] == A[K]) continue;
-
-                    int sqrt = (int)Math.Sqrt(A[index] + A[K]);
-                    if (sqrt * sqrt != A[index] + A[K])
-                        continue;
+                    SwapSquarefull(A, index, K);
+                    if (index == 0 || (index > 0 && IsAdjacentSquare(A, index, index - 1)))
+                    {
+                        Squareful(A, index + 1, result);
+                    }
+                    SwapSquarefull(A, index, K);
                 }
-                SwapSquarefull(A, index, K);
-                Squareful(A, index + 1, result);
-                SwapSquarefull(A, K, index);
             }
+        }
+        private static bool IsAdjacentSquare(List<int> A,int a, int b)
+        {
+            int sqrt = (int)Math.Sqrt(A[a] + A[b]);
+            return (sqrt * sqrt == A[a] + A[b]);
+        }
+        private static bool IsSquareFull(List<int> A)
+        {
+            for(int i = 1; i < A.Count; i++)
+            {
+                int sqrt = (int)Math.Sqrt(A[i - 1] + A[i]);
+                if(sqrt*sqrt != (A[i - 1] + A[i]))
+                    return false;
+            }
+            return true;
         }
         private static void SwapSquarefull(List<int> A, int left, int right)
         {
