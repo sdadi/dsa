@@ -2,6 +2,24 @@
 {
     internal class _9MathModGCD
     {
+        /// <summary>
+        /// Scooby has 3 three integers A, B, and C.
+        /// Scooby calls a positive integer special if it is divisible by B and it is divisible by C.
+        /// You need to tell the number of special integers less than or equal to A.
+        /// </summary>
+        public static void DivisorGame()
+        {
+            int A = 12, B = 3, C = 2;//2
+            //int A = 6, B = 1, C = 4;//1
+            int count = 0;
+            int g = gcd(B, C);
+            int lcm = B * C /g;
+
+            count = A / lcm;
+
+            Console.WriteLine($"number of special integers less than or equal to A is {count}");
+
+        }
         public static void MaxGCDAfterDeleteAny()
         {
             //List<int> A = [12, 15, 18];//6

@@ -83,11 +83,15 @@ namespace _1Advanced
             {
                 int result = 0;
                 int N = A.Length;
-                for (int i = 0; i < N; i++)
+
+                #region best approach to use index to power 26
+                int base26 = 1;
+                for (int i = N - 1; i >= 0; i--)
                 {
-                    int pow = (int)Math.Pow(26, i);
-                    result += pow*(A[N-1-i] - 'A'+1);
-                }
+                    result += base26 * (A[i] - 'A' + 1);
+                    base26 *= 26;
+                } 
+                #endregion
                 Console.WriteLine(result);
             }
         }
@@ -127,7 +131,32 @@ namespace _1Advanced
                 Console.WriteLine();
             }
         }
+        public static void PascalTriangleNormal()
+        {
+            int numRows = 5; // Adjust the number of rows as needed
 
+            for (int i = 0; i < numRows; i++)
+            {
+                int currentValue = 1;
+
+                // Print leading spaces
+                for (int k = numRows - i; k > 0; k--)
+                {
+                    Console.Write(" ");
+                }
+
+                // Print values for the current row
+                for (int j = 0; j <= i; j++)
+                {
+                    Console.Write(currentValue + " ");
+
+                    // Compute the next value for the next iteration
+                    currentValue = currentValue * (i - j) / (j + 1);
+                }
+
+                Console.WriteLine();
+            }
+        }
         public static void PascalTriangle()
         {
             int A = 5;

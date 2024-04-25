@@ -58,14 +58,21 @@
 
             //_9MathModGCD.PairSumMODm();
             //_9MathModGCD.MaxGCDAfterDeleteAny();
+            //_9MathModGCD.DivisorGame();
 
             //_10MathPermutations.nCrMODm();
             //_10MathPermutations.PascalTriangle();
             //_10MathPermutations.PrintPascalTriangle();
+            //_10MathPermutations.PascalTriangleNormal();
             //_10MathPermutations.ExcelColNumber();
             //_10MathPermutations.ExcelColTitle();
-            _10MathPermutations.SortedPermutationRank();
+            //_10MathPermutations.SortedPermutationRank();
             //_10MathPermutations.ConsecutiveNumbers();
+
+            _11PrimeNumber.PrintAllPrime();
+            //_11PrimeNumber.PrimeSum();
+            //_11PrimeNumber.CountOfDivisors();
+            //_11PrimeNumber.LuckyNumber();
         }
     }
 }
