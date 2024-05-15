@@ -190,7 +190,7 @@ namespace _1Advanced
                 return;
             }
 
-            for (int K = index; K < A.Count; K++)
+            for (int K = 0; K < A.Count; K++)
             {
                 if (index == K ||  A[index] != A[K])
                 {

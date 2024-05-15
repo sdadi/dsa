@@ -6,7 +6,10 @@
         {
             //Contest1Run();
             //Contest2Run();
-            print(-3);
+
+            //Contest3.LongestPossibleRoute();
+            Contest3.LongestRouteMoveRun();
+            Stack<int> ints = new Stack<int>();
         }
         static void print(int n)
         {

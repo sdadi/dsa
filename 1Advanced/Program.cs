@@ -2,6 +2,7 @@
 {
     internal class Program
     {
+        
         static void Main(string[] args)
         {
             //Arrays1D.MultipleQueriesItoJ();
@@ -54,6 +55,8 @@
 
             //_8Backtracking.PhoneLetterRun();
             _8Backtracking.SquarefulRun();
+            //List<int> input = [36229, 1020, 69, 127, 162, 127];
+            //new Solution().solve(input);
 
 
             //_9MathModGCD.PairSumMODm();
