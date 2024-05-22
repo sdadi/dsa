@@ -1,11 +1,29 @@
-﻿using static System.Runtime.InteropServices.JavaScript.JSType;
-using System.Reflection;
-using System;
-
-namespace _2Advanced
+﻿namespace _2Advanced
 {
     internal class Searching2
     {
+
+        public static void SquareRoot()
+        {
+            int A = 17;
+            int l = 1, r = A;
+            int result = 0;
+
+            while (l <= r)
+            {
+                int mid = l + (r - l) / 2;
+
+                if (mid <= A/mid)
+                {
+                    result = mid;
+                    l = mid + 1;
+                }
+                else
+                    r = mid - 1;
+            }
+
+            Console.WriteLine(result);
+        }
         /// <summary>
         /// You are given three positive integers, A, B, and C.
         /// Any positive integer is magical if divisible by either B or C.
@@ -23,7 +41,7 @@ namespace _2Advanced
             int A = 807414236, B = 3788, C = 38141;//238134151
 
 
-            long l = Math.Min(B,C), r = A*Math.Min(B,C);
+            long l = Math.Min(B,C), r = A*(long)Math.Min(B,C);
             int lcm = LCD(B, C);
             int mod = 1000000007;
             while (l <= r)
@@ -33,7 +51,7 @@ namespace _2Advanced
 
                 if(count == A && (mid %B == 0 || mid%C==0))
                 {
-                    Console.WriteLine((int)mid%mod);
+                    Console.WriteLine((int)(mid%mod));
                     return;
                 }
 

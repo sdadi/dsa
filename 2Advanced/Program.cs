@@ -14,7 +14,8 @@
             //Searching1.FindPeakElement();
 
             //Searching2.RotatedArraySearch();
-            Searching2.AthMagicalNumber();
+            //Searching2.AthMagicalNumber();
+            Searching2.SquareRoot();
         }
     }
 }

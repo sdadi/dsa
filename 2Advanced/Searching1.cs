@@ -1,11 +1,4 @@
-﻿using static System.Runtime.InteropServices.JavaScript.JSType;
-using System.Collections.Generic;
-using System;
-using System.Diagnostics;
-using System.Xml.Linq;
-using System.ComponentModel;
-
-namespace _2Advanced
+﻿namespace _2Advanced
 {
     internal class Searching1
     {
