@@ -1,9 +1,26 @@
 ﻿using Helpers;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace _2Advanced
 {
     internal class Sorting1
     {
+
+        /// <summary>
+        /// Given an array of integers A, we call (i, j) an important reverse pair if i < j and A[i] > 2*A[j].
+        /// Return the number of important reverse pairs in the given array A.
+        /// Problem Constraints
+        /// 1 <= length of the array <= 10^5
+        /// -2 * 109 <= A[i] <= 2 * 10^9
+        /// </summary>
+        public static void ReversePairs()
+        {
+            List<int> A = [1, 3, 2, 3, 1];//2
+
+            //List<int> A = [4, 1, 2];//1
+
+
+        }
         /// <summary>
         /// Given an array A. Sort this array using Count Sort Algorithm and return the sorted array.
         /// 1 <= |A| <= 10^5
