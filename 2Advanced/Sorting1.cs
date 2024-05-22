@@ -1,12 +1,76 @@
-﻿namespace _2Advanced
+﻿using Helpers;
+
+namespace _2Advanced
 {
     internal class Sorting1
     {
+        /// <summary>
+        /// Given an array A. Sort this array using Count Sort Algorithm and return the sorted array.
+        /// 1 <= |A| <= 10^5
+        /// 1 <= A[i] <= 10^5
+        /// </summary>
+        public static void CountSort()
+        {
+            List<int> A = [1, 3, 1];
+            
+            var result = new List<int>();
+            var fArray = new List<int>();
+            int maxVal = int.MinValue;
+
+            
+            for(int i=0; i < A.Count; i++)
+            {
+                if (A[i] > maxVal)
+                    maxVal = A[i];
+            }
+            for (int i = 0; i <= maxVal; i++)
+            {
+                fArray.Add(0);
+            }
+
+
+            for (int i = 0;i<A.Count ;i++)
+            {
+                fArray[A[i]] += 1;
+            }
+
+            for(int i=1;i< fArray.Count; i++)
+            {
+                while (fArray[i] > 0)
+                {
+                    result.Add(i);
+                    fArray[i] -= 1;
+                }
+            }
+
+            ArrayExtension.PrintArray(result);
+        }
+
+        /// <summary>
+        /// Given an array of integers A. If i < j and A[i] > A[j], then the pair (i, j) is called an inversion of A. 
+        /// Find the total number of inversions of A modulo (109 + 7).
+        /// 1 <= length of the array <= 105
+        /// 1 <= A[i] <= 109
+        /// </summary>
+        public static void InverseCountRun()
+        {
+            //List<int> A = [1, 3, 2];
+            //List<int> A = [3, 4, 1, 2];
+            List<int> A = [45, 10, 15, 25, 50];
+        }
+
         public static void MergeSortRun()
         {
-            List<int> A = [];
+            //List<int> A = [1, 3, 2];
+            //List<int> A = [3, 4, 1, 2];
+            List<int> A = [45, 10, 15, 25, 50];
+            Console.WriteLine("Input array");
+            ArrayExtension.PrintArray(A);
 
             MergeSort(A, 0, A.Count - 1);
+
+            Console.WriteLine("Sorted Array");
+            ArrayExtension.PrintArray(A);
         }
         private static void MergeSort(List<int> A,int l,int r)
         {
@@ -31,26 +95,26 @@
                 rArray.Add(A[i]);
             }
 
-            int k = l, i = 0, j = 0;
+            int k = l, l_new = 0, r_new = 0;
 
-            while(i < (mid-l+1) && j < (r - mid))
+            while(l_new < (lArray.Count) && r_new < (rArray.Count))
             {
-                if (A[i] < A[j])
+                if (lArray[l_new] >= rArray[r_new])
                 {
-                    A[k++] = A[i++];
+                    A[k++] = lArray[l_new++];
                 }
                 else
                 {
-                    A[k++] = A[j++];
+                    A[k++] = rArray[r_new++];
                 }
             }
-            while(i < (mid - l + 1))
+            while(l_new < lArray.Count)
             {
-                A[k++] = A[i++];
+                A[k++] = lArray[l_new++];
             }
-            while(j < (r - mid))
+            while(r_new < rArray.Count)
             {
-                A[k++] = A[j++];
+                A[k++] = rArray[r_new++];
             }
         }
         public static void MergeSortedArrayRun()
