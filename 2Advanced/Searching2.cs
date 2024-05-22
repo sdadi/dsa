@@ -12,7 +12,7 @@
             double result = 0.0;
 
             int total = m + n;
-            int half = total / 2;
+            int half = (total+1) / 2;
 
             int l = 0, r = m;
 
@@ -20,14 +20,16 @@
             {
                 int midA = l +(r - l) / 2;
                 int midB = half - midA;
+                if (midB < 0)
+                    midB = 0;
 
-                int leftA = (midA == 0) ? int.MinValue : A[midA-1];
-                int rightA = (midA == m) ? int.MaxValue : A[midA];
+                int leftA = (midA > 0) ? A[midA-1]:int.MinValue;
+                int rightA = (midA < m) ? A[midA]:int.MaxValue;
 
-                int leftB = (midB == 0) ? int.MinValue : B[midB-1];
-                int rightB = (midB == n)? int.MaxValue : B[midB];
+                int leftB = (midB > 0) ? B[midB-1]:int.MinValue;
+                int rightB = (midB < n)? B[midB]: int.MaxValue;
 
-                if(leftA <= rightB && leftB >= rightA)
+                if(leftA <= rightB && leftB <= rightA)
                 {
                     int maxLeft = Math.Max (leftA, leftB);
                     int minRight = Math.Min(rightA, rightB);
