@@ -2,7 +2,55 @@
 {
     internal class Searching2
     {
+        public static void MedianOf2SortedArrays()
+        {
+            List<int> A = [2,3];
+            List<int> B = [1,4,5];//3.0
 
+            int m = A.Count;
+            int n = B.Count;
+            double result = 0.0;
+
+            int total = m + n;
+            int half = total / 2;
+
+            int l = 0, r = m;
+
+            while (l <= r)
+            {
+                int midA = l +(r - l) / 2;
+                int midB = half - midA;
+
+                int leftA = (midA == 0) ? int.MinValue : A[midA-1];
+                int rightA = (midA == m) ? int.MaxValue : A[midA];
+
+                int leftB = (midB == 0) ? int.MinValue : B[midB-1];
+                int rightB = (midB == n)? int.MaxValue : B[midB];
+
+                if(leftA <= rightB && leftB >= rightA)
+                {
+                    int maxLeft = Math.Max (leftA, leftB);
+                    int minRight = Math.Min(rightA, rightB);
+
+                    if(total%2 == 0)
+                    {
+                        result = (double)((maxLeft + minRight)/2);
+                        break;
+                    }
+                    result =  maxLeft;
+                    break;
+                }
+                else if (leftA > rightB)
+                {
+                    r = midA - 1;
+                }
+                else
+                {
+                    l = midA + 1;
+                }
+            }
+            Console.WriteLine(result);
+        }
         public static void SquareRoot()
         {
             int A = 17;
