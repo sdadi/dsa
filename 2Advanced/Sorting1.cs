@@ -134,12 +134,26 @@ namespace _2Advanced
                 A[k++] = rArray[r_new++];
             }
         }
+
+        /// <summary>
+        /// Given two sorted integer arrays A and B, merge B and A as one sorted array and return it as an output.
+        /// Note: A linear time complexity is expected and you should avoid use of any library function.
+        /// -2×10^9 <= A[i], B[i] <= 2×10^9
+        /// 1 <= |A|, |B| <= 5×10^4
+        /// </summary>
         public static void MergeSortedArrayRun()
         {
-            List<int> A = [];
-            List<int> B = [];
+            //List<int> A = [1];
+            //List<int> B = [2];
+
+            List<int> A = [4, 7,8, 9];
+            List<int> B = [2,8,9, 11, 19];
+
             List<int> C = new List<int>();
 
+            MergeSortedArray(A, B, C);
+
+            ArrayExtension.PrintArray(C);
         }
         private static void MergeSortedArray(List<int> A,List<int> B,List<int> C)
         {
@@ -150,24 +164,20 @@ namespace _2Advanced
             {
                 if (A[i] < B[j])
                 {
-                    C.Add(A[i]);
-                    i++;
+                    C.Add(A[i++]);
                 }
                 else
                 {
-                    C.Add(B[j]);
-                    j++;
+                    C.Add(A[j++]);
                 }
             }
             while (i < N)
             {
-                C.Add(A[i]); 
-                i++;
+                C.Add(A[i++]); 
             }
             while (j < M)
             {
-                C.Add(B[j]);
-                j++;
+                C.Add(B[j++]);
             }
         }
     }

@@ -6,6 +6,7 @@
         {
             //Sorting1.CountSort();
             //Sorting1.MergeSortRun();
+            Sorting1.MergeSortedArrayRun();
 
             //Sorting2.LargestNumber();
             //Sorting2.QuickSortRun();
@@ -20,7 +21,7 @@
             //Searching2.RotatedArraySearch();
             //Searching2.AthMagicalNumber();
             //Searching2.SquareRoot();
-            Searching2.MedianOf2SortedArrays();
+            //Searching2.MedianOf2SortedArrays();
         }
     }
 }
