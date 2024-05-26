@@ -6,7 +6,7 @@
         {
             //Sorting1.CountSort();
             //Sorting1.MergeSortRun();
-            Sorting1.MergeSortedArrayRun();
+            //Sorting1.MergeSortedArrayRun();
 
             //Sorting2.LargestNumber();
             //Sorting2.QuickSortRun();
@@ -22,6 +22,9 @@
             //Searching2.AthMagicalNumber();
             //Searching2.SquareRoot();
             //Searching2.MedianOf2SortedArrays();
+
+            //Searching3.PaintersBoard();
+            //Searching3.SpecialInteger();
         }
     }
 }

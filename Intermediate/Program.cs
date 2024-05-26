@@ -1,4 +1,5 @@
-﻿namespace Intermediate
+﻿using System.Linq;
+namespace Intermediate
 {
     internal class Program
     {
@@ -8,8 +9,15 @@
             //Contest2Run();
 
             //Contest3.LongestPossibleRoute();
-            Contest3.LongestRouteMoveRun();
-            Stack<int> ints = new Stack<int>();
+            //Contest3.LongestRouteMoveRun();
+
+            //Contest4.DecreasingOrderWords();
+            //Contest4.LongestPalindrome();
+            //Contest4.SearchRange();
+
+
+            //Contest4_2.NumerovilleMaxValue();
+            Contest4_2.EatingMangoesSlowly();
         }
         static void print(int n)
         {
@@ -37,4 +45,6 @@
 
         }
     }
+
+
 }
