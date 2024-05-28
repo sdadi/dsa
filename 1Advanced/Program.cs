@@ -13,7 +13,7 @@
             //_2DArray.AddSpiralMatrix();
             //_2DArray.MinSwapsLessThanBTogether();
 
-            //_3_ArrayMergeIntervals.FirstMissingPositive();
+            _3_ArrayMergeIntervals.FirstMissingPositive();
             //_3_ArrayMergeIntervals.MergeIntervels();
             //_3_ArrayMergeIntervals.NumberOf1s();
             //_3_ArrayMergeIntervals.NextPermutation();
@@ -54,7 +54,7 @@
             //_8Backtracking.PermutationsUniqueRun();
 
             //_8Backtracking.PhoneLetterRun();
-            _8Backtracking.SquarefulRun();
+            //_8Backtracking.SquarefulRun();
             //List<int> input = [36229, 1020, 69, 127, 162, 127];
             //new Solution().solve(input);
 

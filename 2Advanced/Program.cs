@@ -25,6 +25,10 @@
 
             //Searching3.PaintersBoard();
             //Searching3.SpecialInteger();
+
+            //TwoPointer.ContainerWithMaxWater(); 
+            //TwoPointer.SubArrayWithSum();
+            TwoPointer.PairsWithSumInArrayDuplicates();
         }
     }
 }
