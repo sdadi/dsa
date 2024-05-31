@@ -1,4 +1,6 @@
-﻿namespace _2Advanced
+﻿using System.ComponentModel.Design;
+
+namespace _2Advanced
 {
     internal class Program
     {
@@ -23,12 +25,15 @@
             //Searching2.SquareRoot();
             //Searching2.MedianOf2SortedArrays();
 
-            //Searching3.PaintersBoard();
+            Searching3.PaintersBoard();
             //Searching3.SpecialInteger();
 
+            //TwoPointer.PairKExist();
             //TwoPointer.ContainerWithMaxWater(); 
             //TwoPointer.SubArrayWithSum();
-            TwoPointer.PairsWithSumInArrayDuplicates();
+            //TwoPointer.PairsWithSumInArrayDuplicates();
+            //TwoPointer.PairsWithGiveDifference();
+            //TwoPointer.Sum3();
         }
     }
 }

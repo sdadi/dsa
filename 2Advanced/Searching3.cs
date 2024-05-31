@@ -1,4 +1,6 @@
-﻿namespace _2Advanced
+﻿using System.Data;
+
+namespace _2Advanced
 {
     internal class Searching3
     {
@@ -30,10 +32,19 @@
 
             Console.WriteLine(ans);
         }
+        /// <summary>
+        /// A: Number of Painters
+        /// B: Time taken by painter to paint 1 unit of board
+        /// C: Array of integers representing units of board at each index
+        /// </summary>
         public static void PaintersBoard()
         {
-            int A = 3, B = 10;
-            List<int> C = [185, 186, 938, 558, 655, 461, 441, 234, 902, 681];//18670
+
+            //int A = 3, B = 10;
+            //List<int> C = [185, 186, 938, 558, 655, 461, 441, 234, 902, 681];//18670
+
+            int A = 1, B = 1000000;
+            List<int> C = [1000000, 1000000];//9400003
 
             //int A = 2, B = 5;
             //List<int> C = [1, 10];//50
@@ -52,11 +63,12 @@
             }
             int result = 0;
 
-            int l = maxC*B, r = sumC*B;
+            //long l = ((long)maxC)*((long)(B)), r = ((long)(sumC) * (long)(B));
+            int l = maxC * B, r = sumC * B;
 
             while (l <= r)
             {
-                int mid = l + (r - l) / 2;
+                int mid = (l + (r - l) / 2);
                 int cnt1 = PaintersNeeded(C,B, mid);
                 int cnt2 = PaintersNeeded(C,B, mid - 1);
 
@@ -71,27 +83,27 @@
                 else
                     r = mid - 1;
             }
-            result = l % mod;
-            //result = (result%mod * B%mod)%mod;
             Console.WriteLine(result);
         }
 
-        private static int PaintersNeeded(List<int> C, int unit, int time)
+        private static int PaintersNeeded(List<int> C, int unitTime, int totalTime)
         {
 
-            int cnt = 1, remT = time;
+            int cnt = 1;
+            int remTime = totalTime;
             for (int i = 0; i < C.Count; i++)
             {
-                int ti = C[i] * unit;
-                if (ti > time) return -1;
-                if (ti <= remT)
+                //long ti = (long)(C[i]) * (long)(unitTime);
+                int ti = C[i] * unitTime;
+                if (ti > totalTime) return -1;
+                if (ti <= remTime)
                 {
-                    remT -= ti;
+                    remTime -= ti;
                 }
                 else
                 {
                     cnt++;
-                    remT = time - ti;
+                    remTime = totalTime - ti;
                 }
             }
             return cnt;

@@ -157,7 +157,7 @@ namespace _2Advanced
         }
         private static void MergeSortedArray(List<int> A,List<int> B,List<int> C)
         {
-            int i = 0,j=0,k=0;
+            int i = 0,j=0;
             int N = A.Count, M = B.Count;
 
             while(i < N && j< M)

@@ -95,24 +95,67 @@ namespace _2Advanced
             List<int> A = [1, 5, 3, 4, 2];
             int B = 3;//2
 
-            //List<itn> A = [8, 12, 16, 4, 0, 20];
+            //List<int> A = [8, 12, 16, 4, 0, 20];
             //int B = 4;//5
 
 
             //List<int> A = [1, 1, 1, 2, 2];
             //int B = 0;//2
 
+            A.Sort();
+            int N = A.Count;
             int left = 0, right = 1;
             int result = 0;
 
-            while(left < right)
+            while(right < N)
             {
-                if (A[right] - A[left] == B)
+                int diff = A[right] - A[left];
+                if (left == right)
+                {
+                    right++;
+                }
+                else if (diff == B)
                 {
                     result++;
+                    right++;
+                    while (right < N && A[right] == A[right-1]) {   right++; }
                 }
+                else if (diff < B)
+                {
+                    right++;
+                }
+                else
+                    left++;
+                //int x = A[left];
+                //int y = A[right];
+                //if (x == y)
+                //{
+                //    if (y - x == B)
+                //    {
+                //        while (right < N && A[right] == y) { right++; }
+                //        left = right-1;
+                //        result += 1;
+                //        if(right < N)
+                //            y = A[right];
+                //    }
+                //}
+                //if (y-x == B)
+                //{
+                //    while (left < right && A[left] == x) { left++; }
+                //    while (right < N && A[right] == y) { right++; }
+                //    result++;
+                //}
+                //else if (y-x < B)
+                //{
+                //    while (right < N && A[right] == y) { right++; }
+                //}
+                //else
+                //{
+                //    while (left < right && A[left] == x) { left++; }
+                //}
             }
 
+            Console.WriteLine(result);
         }
 
         /// <summary>
@@ -145,26 +188,27 @@ namespace _2Advanced
             {
                 int x = A[left];
                 int y = A[right];
+                int sum = x + y;
                 int cntL = 0,cntR = 0;
 
                 if(x == y)
                 {
-                    if(x+y == B)
+                    if(sum == B)
                     {
                         int cnt = right - left + 1;
-                        result += (((cnt % mod) * ((cnt - 1) % mod) / 2) % mod) % mod;
+                        result += (cnt*(cnt-1)/2) % mod;
                     }
                     break;
                 }
 
-                if (x + y == B)
+                if (sum == B)
                 {
                     while (A[left] == x) { cntL++; left++; }
                     while (A[right] == y) { cntR++; right--; }
                     result += ((cntL%mod) * (cntR%mod))%mod;
 
                 }
-                else if (x + y < B)
+                else if (sum < B)
                 {
                     while (A[left] == x) { left++; }
                 }
@@ -176,26 +220,79 @@ namespace _2Advanced
 
             Console.WriteLine(result);
         }
+
+        public static void Sum3()
+        {
+            //List<int> A = [-1, 2, 1, -4];
+            //int B = 1;//2
+
+            //List<int> A = [1, 2, 3];
+            //int B = 6;//6
+
+            List<int> A = [-5, 1, 4, -7, 10, -7, 0, 7, 3, 0, -2, -5, -3, -6, 4, -7, -8, 0, 4, 9, 4, 1, -8, -6, -6, 0, -9, 5, 3, -9, -5, -9, 6, 3, 8, -10, 1, -2, 2, 1, -9, 2, -3, 9, 9, -10, 0, -9, -2, 7, 0, -4, -3, 1, 6, -3];
+            int B = -1;
+
+            A.Sort();
+            int N = A.Count;
+            int result = int.MaxValue;
+            if (B < 0) result += B;
+            bool found = false;
+            for(int i=0;i< N-2; i++)
+            {
+                int x = A[i];
+                int left = i + 1, right = N - 1;
+
+                while (left < right)
+                {
+                    int sum = A[left] + A[right]+x;
+                    if(Math.Abs(sum-B) < Math.Abs(result - B))
+                    {
+                        result = sum;
+                    }
+                    if(sum < B)
+                    {
+                        left++;
+                    }
+                    else if(sum > B)
+                    {
+                        right--;
+                    }
+                    else
+                    {
+                        result = B;
+                        found = true;
+                        break;
+                    }
+                }
+                if (found)
+                    break;
+            }
+
+            Console.WriteLine(result);
+        }
         public static void PairKExist()
         {
             List<int> A = [-3, 0, 1, 2, 5, 6, 8, 11];
             int B = 8;
 
-            bool exist = false;
-            int left = 0, right = A.Count;
+            int count = 0;
+            int left = 0, right = A.Count-1;
 
             while(left < right)
             {
                 if (A[left] + A[right] == B)
                 {
-                    exist = true; 
-                    break;
+                    count++;
+                    left++;
+                    right--;
                 }
                 if (A[left] + A[right] > B)
                     right--;
                 else
                     left++;
             }
+
+            Console.WriteLine(count);
         }
     }
 }
