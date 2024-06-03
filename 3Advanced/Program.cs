@@ -10,7 +10,10 @@
             //LinkedListMethods();
 
             //LinkedList1.RemoveDuplicatesFromSortedLinkedList();
-            LinkedList1.RemoveNthFromEnd();
+            //LinkedList1.RemoveNthFromEnd();
+            //LinkedList1.ReverseBNodesRecursive();
+            LinkedList1.LongestPalindromeLinkedList();
+
 
             //LinkedList2.MiddleElementofLinkedList();
             //LinkedList2.MergeTwoSortedLinkedLists();

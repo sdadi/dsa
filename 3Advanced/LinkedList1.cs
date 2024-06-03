@@ -329,13 +329,13 @@ namespace _3Advanced
 
             ListNode A = input.ListToListNode();
 
-            if(A == null)
+            if (A == null)
             {
                 A.PrintLinkedList();
                 return;
             }
 
-            ListNode first = A, second = A;
+            ListNode first = A;
             for (int i = 1; i <= B; i++)
             {
                 if (first == null)
@@ -343,23 +343,122 @@ namespace _3Advanced
                     break;
                 }
                 else
+                {
                     first = first.next;
+                }
             }
+
             if (first == null)
             {
-                A = A.next;
-                A.PrintLinkedList();
+                A.next.PrintLinkedList();
                 return;
             }
+
+            ListNode second = A;
 
             while (first.next != null)
             {
                 first = first.next;
                 second = second.next;
             }
-            if(second!=null && second.next !=null)
+
+            if (second != null && second.next != null)
                 second.next = second.next.next;
             A.PrintLinkedList();
+        }
+
+        public static void ReverseBNodesRecursive()
+        {
+            //List<int> input = [1, 2, 3, 4, 5, 6];
+            //int B = 2;
+
+            //List<int> input = [1, 2, 3, 4, 5, 6];
+            //int B = 3;
+
+            List<int> input = [6, 10, 0, 3, 4, 8];
+            int B = 3;
+
+            ListNode A = input.ListToListNode();
+
+            A = ReversBNodes(A, B);
+            A.PrintLinkedList();
+        }
+        private static ListNode ReversBNodes(ListNode Head, int B)
+        {
+            ListNode current = Head;
+            ListNode previous = null;
+            ListNode next = null;
+
+            int count = 0;
+            while (current != null && count < B)
+            {
+                next = current.next;
+                current.next = previous;
+                previous = current;
+                current = next;
+                count++;
+            }
+
+            if (next != null)
+            {
+                Head.next = ReversBNodes(next, B);
+            }
+            return previous;
+        }
+        /// <summary>
+        /// Given a linked list of integers. Find and return the length of the longest palindrome list that exists in that linked list.
+        /// A palindrome list is a list that reads the same backward and forward.
+        /// Expected memory complexity : O(1)
+        /// Problem Constraints
+        /// 1 <= length of the linked list <= 2000
+        /// 1 <= Node value <= 100
+        /// </summary>
+        public static void LongestPalindromeLinkedList()
+        {
+            List<int> input = [2, 3, 3, 3];
+
+            //List<int> input = [2, 1, 2, 1, 2, 2, 1, 3, 2, 2];
+
+            ListNode A = input.ListToListNode();
+
+            if (A == null)
+            {
+                Console.WriteLine(0);
+                return;
+            }
+
+            ListNode current = A;
+            ListNode previous = null;
+            ListNode next = null;
+            int ans = 0;
+            while (current != null)
+            {
+                next = current.next;
+                current.next = previous;
+
+                ans = Math.Max(ans, 2 * CountNodes(current, next));
+
+                ans = Math.Max(ans, 2*CountNodes(previous, next)+1);
+
+                previous = current;
+                current = next;
+            }
+
+            Console.WriteLine(ans);
+        }
+        private static int CountNodes(ListNode A, ListNode B)
+        {
+            int count = 0;
+
+            while (A!=null  && B != null)
+            {
+                if (A.val != B.val)
+                    break;
+                count++;
+                A = A.next;
+                B = B.next;
+            }
+            return count;
         }
     }
 }
