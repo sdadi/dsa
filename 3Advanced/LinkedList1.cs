@@ -1,4 +1,8 @@
-﻿namespace _3Advanced
+﻿using System.Collections.Generic;
+using System.Diagnostics.Metrics;
+using System.Xml.Linq;
+
+namespace _3Advanced
 {
     internal class LinkedList1
     {
@@ -271,7 +275,91 @@
             Console.Write(sb.ToString().TrimEnd());
         }
 
-        public static ListNode Head = null; 
+        public static ListNode Head = null;
         #endregion
+
+        /// <summary>
+        /// Given a sorted linked list, delete all duplicates such that each element appears only once.
+        /// Problem Constraints
+        /// 0 <= length of linked list <= 10^6
+        /// </summary>
+        public static void RemoveDuplicatesFromSortedLinkedList()
+        {
+            //List<int> input = [1, 1, 2];
+
+            List<int> input = [1, 1, 2, 3,3,4,4,4,4,5,5,5,5];
+
+            ListNode A = input.ListToListNode();
+
+           if(A == null || A.next == null)
+            {
+                A.PrintLinkedList();
+                return;
+            }
+
+            ListNode current = A;
+            while ( current.next != null)
+            {
+                if(current.val == current.next.val)
+                {
+                    current.next = current.next.next;
+                    continue;
+                }
+                current = current.next;
+            }
+            A.PrintLinkedList();
+        }
+
+        /// <summary>
+        /// Given a linked list A, remove the B-th node from the end of the list and return its head.
+        /// For example, given linked list: 1->2->3->4->5, and B = 2.
+        /// After removing the second node from the end, the linked list becomes 1->2->3->5.
+        /// NOTE: If B is greater than the size of the list, remove the first node of the list.
+        /// Try doing it using constant additional space.
+        /// Problem Constraints
+        /// 1 <= |A| <= 10^6
+        /// </summary>
+        public static void RemoveNthFromEnd()
+        {
+            List<int> input = [1, 2, 3, 4, 5];
+            int B = 1;
+
+            //List<int> input = [1,2];
+            //int B = 1;
+
+            ListNode A = input.ListToListNode();
+
+            if(A == null)
+            {
+                A.PrintLinkedList();
+                return;
+            }
+
+            ListNode first = A, second = A;
+            for (int i = 1; i <= B; i++)
+            {
+                if (first == null)
+                {
+                    break;
+                }
+                else
+                    first = first.next;
+            }
+            if (first == null)
+            {
+                A = A.next;
+                A.PrintLinkedList();
+                return;
+            }
+
+            while (first.next != null)
+            {
+                first = first.next;
+                second = second.next;
+            }
+            if(second!=null && second.next !=null)
+                second.next = second.next.next;
+            A.PrintLinkedList();
+        }
     }
 }

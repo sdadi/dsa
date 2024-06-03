@@ -7,7 +7,18 @@
             //LinkedList1.ReverseLinkedList();
             //LinkedList1.ReverseLinkedListRange();
             //LinkedList1.PalindromeLinkedList();
-            LinkedListMethods();
+            //LinkedListMethods();
+
+            //LinkedList1.RemoveDuplicatesFromSortedLinkedList();
+            LinkedList1.RemoveNthFromEnd();
+
+            //LinkedList2.MiddleElementofLinkedList();
+            //LinkedList2.MergeTwoSortedLinkedLists();
+            //LinkedList2.SortLinkedList();
+            //LinkedList2.RemoveLoopFromLinkedList();
+            //LinkedList2.AddTwoNumberofLists();
+
+            //LinkedList2.ReorderLinkedList();
 
         }
 

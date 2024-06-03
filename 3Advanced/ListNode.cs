@@ -33,6 +33,7 @@ namespace _3Advanced
 
         public static ListNode ListToListNode(this List<int> input)
         {
+            if (input == null) return null;
             ListNode head = new ListNode(input[0]);
             var temp = head;
             for (int i = 1; i < input.Count; i++)
