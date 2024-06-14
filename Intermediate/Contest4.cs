@@ -54,6 +54,8 @@ namespace Intermediate
                     result = Math.Max(result, diff);
                     j++;
                 }
+                if (j >= M)
+                    break;//after this any diff can never be max than till now.
             }
 
             Console.WriteLine(result);
