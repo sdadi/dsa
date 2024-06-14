@@ -12,7 +12,7 @@
             //LinkedList1.RemoveDuplicatesFromSortedLinkedList();
             //LinkedList1.RemoveNthFromEnd();
             //LinkedList1.ReverseBNodesRecursive();
-            LinkedList1.LongestPalindromeLinkedList();
+            //LinkedList1.LongestPalindromeLinkedList();
 
 
             //LinkedList2.MiddleElementofLinkedList();
@@ -23,6 +23,25 @@
 
             //LinkedList2.ReorderLinkedList();
 
+            //LinkedLIst3.IntersectionOfLinkedList();
+            //LinkedLIst3.LRUCheck();
+
+            //Stack1.BalancedParanthesis();
+            //Stack1.DoubleCharacterTrouble();
+            //Stack1.PassingGame();
+            //Stack1.InfixToPostfix();
+            //Stack1.EvaluatePostfix();
+
+            //Stack2.NearestSmallestElement();
+            //Stack2.LargestRectangleInHistogram();
+            //Stack2.NearestGreaterOnRight();
+            Stack2.MaxMinDifferenceSubArrays();
+
+            //Queues.QueueUsingStack();
+            //Queues.PerfectNumber();
+            //Queues.NIntegersContainingOnly123();
+            //Queues.ParkingIceCreamTruck();
+            //Queues.ReverseBItemsInQueue();
         }
 
         static void LinkedListMethods()

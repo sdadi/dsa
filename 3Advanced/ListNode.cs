@@ -8,9 +8,21 @@ namespace _3Advanced
         public ListNode next;
         public ListNode(int data)
         {
-            this.val = data;
-            this.next = null;
+            val = data;
+            next = null;
         }
+    }
+    public class DoubleListNode
+    {
+        public DoubleListNode(int data)
+        {
+            val = data;
+            prev = null;
+            next = null;
+        }
+        public int val;
+        public DoubleListNode next;
+        public DoubleListNode prev;
     }
 
     public static class ListNodeExtension
@@ -33,7 +45,7 @@ namespace _3Advanced
 
         public static ListNode ListToListNode(this List<int> input)
         {
-            if (input == null) return null;
+            if (input == null || !input.Any()) return null;
             ListNode head = new ListNode(input[0]);
             var temp = head;
             for (int i = 1; i < input.Count; i++)

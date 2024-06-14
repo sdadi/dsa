@@ -1,4 +1,6 @@
-﻿namespace Helpers
+﻿using System.Text;
+
+namespace Helpers
 {
     public static class ArrayExtension
     {
@@ -13,12 +15,20 @@
                 end--;
             }
         }
+        public static string PrintString<T>(this List<T> A)
+        {
+            StringBuilder op = new StringBuilder();
+            for (int i=0;i<A.Count;i++)
+            {
+                op.Append(A[i]);
+                if(i!=A.Count-1)
+                    op.Append(" ");
+            }
+            return op.ToString();
+        }
         public static void PrintArray<T>(this List<T> A)
         {
-            foreach(var item in A)
-            {
-                Console.Write(item + "  ");
-            }
+            Console.WriteLine(PrintString(A));
         }
         public static void Swap<T>(this List<T> A, int i, int j)
         {
