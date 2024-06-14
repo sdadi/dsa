@@ -1,10 +1,5 @@
 ﻿using _3Advanced;
 using Helpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Intermediate
 {
@@ -41,37 +36,25 @@ namespace Intermediate
             string A = "bcc";
             string B = "abc";//1
 
-            A = "add";
-            B = "abcd";//2
+            //A = "add";
+            //B = "abcd";//2
 
-            A = "aabbbbcc";
-            B = "abbccccccd";//2
+            //A = "aabbbbcc";
+            //B = "abbccccccd";//2
 
-            int i = 0, j = 0,N = A.Length, M = B.Length;
-            int result = int.MinValue;
+            int j = 0,N = A.Length, M = B.Length;
+            int result =0;
             int diff = 0;
 
-            while (i < N && j < M)
+           for(int i=0; i<A.Length; i++)
             {
-                char first = A[i];
-                char second = B[j];
-
-                if(first >= second)
+                while(j<M && A[i] >= B[j])
                 {
+                    diff = j - i;
+                    result = Math.Max(result, diff);
                     j++;
                 }
-                else if(first < second)
-                {
-                    j--;
-                    diff = (i > j) ? 0 : Math.Abs(j - i);
-                    result = Math.Max(result, diff);
-                    i++;
-                }
             }
-            if (i >= N)
-                i = N - 1;
-            diff = (i > j) ? 0 : Math.Abs(j - i);
-            result = Math.Max(result, diff);
 
             Console.WriteLine(result);
         }
@@ -109,14 +92,12 @@ namespace Intermediate
             }
 
             var current = A;
-            var previous = slow;
-            while (slow != current)
+            while (slow.next != current.next)
             {
-                previous = slow;
                 slow = slow.next;
                 current = current.next;
             }
-            previous.next = null;
+            slow.next = null;
             A.PrintLinkedList();
         }
     }

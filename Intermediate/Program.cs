@@ -21,6 +21,7 @@ namespace Intermediate
 
             //Contest4.WarmerTemparature();
             Contest4.MaximumGoodPair();
+            //Contest4.RemoveLoopFromLinkedList();
         }
         static void print(int n)
         {
