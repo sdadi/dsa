@@ -338,46 +338,46 @@ namespace _3Advanced
 
         public static void CopyLinkedList()
         {
-            RandomListNode head = new RandomListNode(-1);
-            var x = head;
-            while (x != null)
-            {
-                var y = new RandomListNode(x.label);
-                y.next = x.next;
-                x.next = y;
-                x = y.next;// x.next.next;
-            }
+            //RandomListNode head = new RandomListNode(-1);
+            //var x = head;
+            //while (x != null)
+            //{
+            //    var y = new RandomListNode(x.label);
+            //    y.next = x.next;
+            //    x.next = y;
+            //    x = y.next;// x.next.next;
+            //}
 
-            x = head;
-            while (x != null)
-            {
-                if (x.random != null)
-                    x.next.random = x.random.next;
-                else
-                    x.next.random = null;
-                x = x.next.next;
-            }
+            //x = head;
+            //while (x != null)
+            //{
+            //    if (x.random != null)
+            //        x.next.random = x.random.next;
+            //    else
+            //        x.next.random = null;
+            //    x = x.next.next;
+            //}
 
-            var H2 = head.next;
-            x = head;
-            var b = H2;
-            while (x != null)
-            {
-                // x.next = b.next;
-                // x = x.next;
-                // if(x!=null){
-                //     b.next = x.next;
-                //     b = x.next;
-                // }
-                x.next = x.next.next;
-                if (b.next != null)
-                {
-                    b.next = b.next.next;
-                }
-                x = x.next;
-                b = b.next;
-            }
-            return H2;
+            //var H2 = head.next;
+            //x = head;
+            //var b = H2;
+            //while (x != null)
+            //{
+            //    // x.next = b.next;
+            //    // x = x.next;
+            //    // if(x!=null){
+            //    //     b.next = x.next;
+            //    //     b = x.next;
+            //    // }
+            //    x.next = x.next.next;
+            //    if (b.next != null)
+            //    {
+            //        b.next = b.next.next;
+            //    }
+            //    x = x.next;
+            //    b = b.next;
+            //}
+            //return H2;
         }
     }
 }

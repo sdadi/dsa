@@ -17,7 +17,10 @@ namespace Intermediate
 
 
             //Contest4_2.NumerovilleMaxValue();
-            Contest3_2.EatingMangoesSlowly();
+            //Contest3_2.EatingMangoesSlowly();
+
+            //Contest4.WarmerTemparature();
+            Contest4.MaximumGoodPair();
         }
         static void print(int n)
         {
