@@ -62,24 +62,62 @@ namespace Intermediate
                 }
                 else if(first < second)
                 {
-                    if (i > j-1)
-                        diff = 0;
-                    else
-                        diff = Math.Abs(j - 1 - i);
+                    j--;
+                    diff = (i > j) ? 0 : Math.Abs(j - i);
                     result = Math.Max(result, diff);
-                        i++;
-                    j = i;
+                    i++;
                 }
             }
             if (i >= N)
                 i = N - 1;
-            if (i > j-1)
-                diff = 0;
-            else
-                diff = Math.Abs(j - 1 - i);
+            diff = (i > j) ? 0 : Math.Abs(j - i);
             result = Math.Max(result, diff);
 
             Console.WriteLine(result);
+        }
+
+
+        public static void RemoveLoopFromLinkedList()
+        {
+            ListNode A = new ListNode(6);
+            A.next = new ListNode(5);
+            var pt = new ListNode(3);
+            A.next.next = pt;
+            pt.next = new ListNode(8);
+            pt.next.next = pt;
+
+            if (A == null)
+                return;// A;
+
+            var slow = A;
+            var fast = A;
+            bool isLoop = false;
+
+            while (fast.next != null && fast.next.next != null)
+            {
+                fast = fast.next.next;
+                slow = slow.next;
+                if (fast == slow)
+                {
+                    isLoop = true;
+                    break;
+                }
+            }
+            if (isLoop = false)
+            {
+                return;// A;
+            }
+
+            var current = A;
+            var previous = slow;
+            while (slow != current)
+            {
+                previous = slow;
+                slow = slow.next;
+                current = current.next;
+            }
+            previous.next = null;
+            A.PrintLinkedList();
         }
     }
 }
