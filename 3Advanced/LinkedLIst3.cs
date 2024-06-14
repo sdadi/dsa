@@ -1,4 +1,12 @@
-﻿namespace _3Advanced
+﻿using System;
+using System.Collections.Concurrent;
+using static System.Net.Mime.MediaTypeNames;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Reflection;
+using System.Xml.Linq;
+
+namespace _3Advanced
 {
     internal class LinkedLIst3
     {
@@ -140,6 +148,59 @@
         /// 0 <= |A| <= 10^6
         /// </summary>
         public static void DeepCopyLinkedList()
+        {
+
+        }
+        /// <summary>
+        /// Given a linked list A and a value B, partition it such that all nodes less than B come before nodes greater than or equal to B.
+        /// You should preserve the original relative order of the nodes in each of the two partitions.
+        /// Problem Constraints
+        /// 1 <= |A| <= 10^6
+        /// 1 <= A[i], B <= 10^9
+        /// </summary>
+        public static void PartitionListLessthanB()
+        {
+            List<int> input = [1, 4, 3, 2, 5, 2];
+            int B = 3;//[1,2,2,4,3,5]
+
+            //input = [1, 2, 3, 1, 3];
+            //B = 2;//[1,1,2,3,3]
+
+            var A = input.ListToListNode();
+
+            ListNode less_start = new ListNode(0);
+            ListNode great_start = new ListNode(0);
+            var less = less_start;
+            var great = great_start;
+            var current = A;
+            while (current != null)
+            {
+                if (current.val < B)
+                {
+                    less.next = current;
+                    less = less.next;
+                }
+                else
+                {
+                    great.next = current;
+                    great = great.next;
+                }
+                current = current.next;
+            }
+            great.next = null;
+            less.next = great_start.next;
+            less_start.next.PrintLinkedList();
+        }
+        /// <summary>
+        /// Given a linked list where every node represents a linked list and contains two pointers of its type:
+        /// Pointer to next node in the main list(right pointer)
+        /// Pointer to a linked list where this node is head(down pointer). All linked lists are sorted.
+        /// You are asked to flatten the linked list into a single list.Use down pointer to link nodes of the flattened list.The flattened linked list should also be sorted.
+        /// Problem Constraints
+        /// 1 <= Total nodes in the list <= 100000
+        /// 1 <= Value of node <= 10^9
+        /// </summary>
+        public static void FlattenLinkedList()
         {
 
         }

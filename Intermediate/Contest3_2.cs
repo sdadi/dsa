@@ -2,7 +2,7 @@
 
 namespace Intermediate
 {
-    internal class Contest4_2
+    internal class Contest3_2
     {
         public static void NumerovilleMaxValue()
         {

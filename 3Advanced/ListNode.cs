@@ -24,7 +24,12 @@ namespace _3Advanced
         public DoubleListNode next;
         public DoubleListNode prev;
     }
-
+    public class RandomListNode
+    {
+        public int label;
+        public RandomListNode next, random;
+        public RandomListNode(int x) { this.label = x; }
+    }
     public static class ListNodeExtension
     {
         public static void PrintLinkedList(this ListNode head)

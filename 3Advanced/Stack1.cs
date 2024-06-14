@@ -98,7 +98,7 @@ namespace _3Advanced
             StringBuilder outpu = new StringBuilder();
             while (!stack.IsEmpty())
             {
-                outpu.Insert(0, (char)stack.Pop());
+                outpu.Append((char)stack.Pop());
             }
             Console.WriteLine(new string(outpu.ToString().Reverse().ToArray()));
         }

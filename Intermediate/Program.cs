@@ -17,7 +17,7 @@ namespace Intermediate
 
 
             //Contest4_2.NumerovilleMaxValue();
-            Contest4_2.EatingMangoesSlowly();
+            Contest3_2.EatingMangoesSlowly();
         }
         static void print(int n)
         {
@@ -28,17 +28,17 @@ namespace Intermediate
         static void Contest1Run()
         {
             Console.WriteLine("-----     Problem: Toggle Case                       -----");
-            Contest1.ToggleCase();
+            Contest_1.ToggleCase();
             Console.WriteLine("\n\n\n-----     Problem: Count of Non Negative Profit      -----");
-            Contest1.CountOfNonNegativeProfit();
+            Contest_1.CountOfNonNegativeProfit();
             Console.WriteLine("\n\n\n-----     Problem: Network Super Stream              -----");
-            Contest1.SuperStream();
+            Contest_1.SuperStream();
         }
         static void Contest2Run()
         {
             //Contest2.BenjaminAND();
             //Contest2.MaxPossibleSubArraywithDecreasingDishes();
-            Contest2.SearchRowWiseColWiseSortedMatrix();
+            Contest1.SearchRowWiseColWiseSortedMatrix();
         }
         static void test()
         {

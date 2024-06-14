@@ -25,9 +25,10 @@
 
             //LinkedLIst3.IntersectionOfLinkedList();
             //LinkedLIst3.LRUCheck();
+            //LinkedLIst3.PartitionListLessthanB();
 
             //Stack1.BalancedParanthesis();
-            //Stack1.DoubleCharacterTrouble();
+            Stack1.DoubleCharacterTrouble();
             //Stack1.PassingGame();
             //Stack1.InfixToPostfix();
             //Stack1.EvaluatePostfix();
@@ -35,7 +36,7 @@
             //Stack2.NearestSmallestElement();
             //Stack2.LargestRectangleInHistogram();
             //Stack2.NearestGreaterOnRight();
-            Stack2.MaxMinDifferenceSubArrays();
+            //Stack2.MaxMinDifferenceSubArrays();
 
             //Queues.QueueUsingStack();
             //Queues.PerfectNumber();

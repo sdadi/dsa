@@ -25,7 +25,7 @@ namespace _2Advanced
             //Searching2.SquareRoot();
             //Searching2.MedianOf2SortedArrays();
 
-            Searching3.PaintersBoard();
+            //Searching3.PaintersBoard();
             //Searching3.SpecialInteger();
 
             //TwoPointer.PairKExist();

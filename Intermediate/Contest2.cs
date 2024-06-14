@@ -1,104 +1,126 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Intermediate
+﻿namespace Intermediate
 {
     internal class Contest2
     {
-        public static void BenjaminAND()
+        static int max_result = 0;
+        public static void LongestPossibleRoute()
         {
-            //List<int> A = [1, 2, 3];
-            //List<int> B = [0, 1, 2];
+            List<int> A = [0, 1];
+            List<int> B = [2, 0];
+            List<List<int>> C = [[1, 1], [0, 0], [1, 1]];
 
-            //List<int> A = [2, 5, 6, 7];
-            //List<int> B = [1, 2];
-
-            List<int> A = [28, 7,3,6,23,16,5,29,23];
-            List<int> B = [5, 0, 1];
-
-            var result = new List<int>();
-            for(int i=0;i<B.Count;i++)
+            var visited = new List<List<bool>>();
+            for (int a = 0; a < C.Count; a++)
             {
-                int count = 0;
-                for(int j = 0; j < A.Count; j++)
+                var item = new List<bool>();
+                for (int b = 0; b < C[0].Count; b++)
                 {
-                    if ((A[j] & (1 << B[i])) > 0)
+                    item.Add(false);
+                }
+                visited.Add(item);
+            }
+
+            if (C[A[0]][A[1]] == 0)
+            {
+                Console.WriteLine(-1);
+                return;
+            }
+
+            int i = A[0], j = A[1];
+            visited[i][j] = true;
+
+
+            int result = 0;
+            LongestPathMove(A, B, i, j, C, visited, result);
+            Console.WriteLine(max_result);
+        }
+
+        private static void LongestPathMove(List<int> A, List<int> B, int i, int j, List<List<int>> C, List<List<bool>> visited, int result)
+        {
+            if (i == B[0] && j == B[1])
+            {
+                max_result = result;
+                return;
+            }
+            while (i < C.Count && j < C[0].Count)
+            {
+                if (C[i][j] == 0) { break; }
+                // check top exist
+                if (i > 0 && C[i - 1][j] == 1 && visited[i - 1][j] == false)
+                {
+                    result += 1;
+
+                    visited[i - 1][j] = true;
+                    max_result = Math.Max(max_result, result);
+                    LongestPathMove(A, B, i - 1, j, C, visited, result);
+                }
+                // check left exist
+                if (j > 0 && C[i][j - 1] == 1 && visited[i][j - 1] == false)
+                {
+                    visited[i][j - 1] = true;
+                    result += 1;
+                    max_result = Math.Max(max_result, result);
+                    LongestPathMove(A, B, i, j - 1, C, visited, result);
+                }
+
+                // check down exst
+                if (i < C.Count - 1 && C[i + 1][j] == 1 && visited[i + 1][j] == false)
+                {
+                    result += 1;
+                    visited[i + 1][j] = true;
+                    LongestPathMove(A, B, i + 1, j, C, visited, result);
+                    max_result = Math.Max(max_result, result);
+                }
+
+                // check right exist
+                if (j < C[0].Count - 1 && C[i][j + 1] == 1 && visited[i][j + 1] == false)
+                {
+                    result += 1;
+                    visited[i][j + 1] = true;
+                    LongestPathMove(A, B, i, j + 1, C, visited, result);
+                    max_result = Math.Max(max_result, result);
+                }
+                i++; j++;
+            }
+        }
+        public static void LongestRouteMoveRun()
+        {
+            List<int> A = [1, 1];
+            List<int> B = [2, 2];
+            List<List<int>> C = [   [1, 1, 1], 
+                                    [1, 1, 1], 
+                                    [1, 1, 1]
+                                ];
+
+            int result = LongestRouteMove(A[0], A[1], B[0], B[1], C);
+            Console.WriteLine(result);
+        }
+        private static int LongestRouteMove(int sr, int sc, int er, int ec, List<List<int>> matrix)
+        {
+            if (sr == er && sc == ec) return 0;
+            int N = matrix.Count,
+                M = matrix[0].Count;
+            List<int> dir_r = [-1, 0, 1, 0];//top, left, down, right
+            List<int> dir_c = [0, -1, 0, 1];//top, left, down, right
+            int max_path = -1;
+            matrix[sr][sc] = -1;
+
+            for (int i = 0; i < 4; i++)
+            {
+                int new_r = sr + dir_r[i];
+                int new_c = sc + dir_c[i];
+
+                if (0 <= new_r && new_r < N && 0 <= new_c && new_c < M && matrix[new_r][new_c] == 1)
+                {
+                    int result = LongestRouteMove(new_r, new_c, er, ec, matrix);
+                    if (result != -1)
                     {
-                        count++;
+                        max_path = Math.Max(result+1, max_path);
                     }
                 }
-                count = count * (count - 1) / 2;
-                result.Add(count);
             }
-            foreach (var r in result)
-                Console.Write($"{r} ");
-            Console.WriteLine();
-        }
-        public static void MaxPossibleSubArraywithDecreasingDishes()
-        {
-            List<int> A = [3, 2, 1];//6
-            //List<int> A = [3, 3, 5, 0, 1];//5
-            //List<int> A = [10, 4, 9, 1, 3, 5];//14
-
-            int N = A.Count;
-
-            int sum = A[N-1];
-            int result = sum;
-            for (int i=N-2; i >= 0; i--)
-            {
-                if (A[i] > A[i + 1])
-                {
-                    sum += A[i];
-                    if(sum > result)
-                        result = sum;
-                } else
-                {
-                    sum = A[i];
-                }
-
-            }
-            Console.WriteLine(result);
-        }
-
-
-        public static void SearchRowWiseColWiseSortedMatrix()
-        {
-            List<List<int>> A = [[1, 2, 3], [4, 5, 6,], [5, 8, 9]];//1011
-            int B = 5;
-
-            //List<List<int>> A = [[1, 2], [3, 3]];//2019
-            //int B = 3;
-
-
-            int N = A.Count;
-            int M = A[0].Count;
-            int result = int.MaxValue;
-
-            int row = 0, col = M - 1;
-
-            while(row < N && col >= 0)
-            {
-                if (A[row][col] == B)
-                {
-                    result = Math.Min(result,((row + 1) * 1009 + (col + 1)));
-                    col--;
-                }
-                else if (B < A[row][col])
-                {
-                    col--;
-                }
-                else
-                {
-                    row++;
-                }
-            }
-            if (result == int.MaxValue)
-                result = -1;
-
-            Console.WriteLine(result);
+            matrix[sr][sc] = 1;
+            return max_path;
         }
     }
 }
