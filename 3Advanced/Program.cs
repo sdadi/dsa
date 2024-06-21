@@ -28,7 +28,7 @@
             //LinkedLIst3.PartitionListLessthanB();
 
             //Stack1.BalancedParanthesis();
-            Stack1.DoubleCharacterTrouble();
+            //Stack1.DoubleCharacterTrouble();
             //Stack1.PassingGame();
             //Stack1.InfixToPostfix();
             //Stack1.EvaluatePostfix();
@@ -43,6 +43,17 @@
             //Queues.NIntegersContainingOnly123();
             //Queues.ParkingIceCreamTruck();
             //Queues.ReverseBItemsInQueue();
+
+            //Trees1.PreOrderTraversal();
+            //Trees1.InOrderTraversal();
+            //Trees1.BinaryTreeFromInOrderPostOrder();
+            //Trees1.PostOrderTraversal();
+            //Trees1.BinaryTreeFromPreOrderInOrder();
+
+            //Trees2.LevelOrder();
+            //Trees2.RightViewofBinaryTree();
+            Trees2.VerticalOrderTraversal();
+            //Trees2.IsBalancedBinaryTree();
         }
 
         static void LinkedListMethods()

@@ -20,8 +20,11 @@ namespace Intermediate
             //Contest3_2.EatingMangoesSlowly();
 
             //Contest4.WarmerTemparature();
-            Contest4.MaximumGoodPair();
+            //Contest4.MaximumGoodPair();
             //Contest4.RemoveLoopFromLinkedList();
+
+            //Contest4_2.ContainerWithMostWater();
+            Contest4_2.ReverseEvenNodes();
         }
         static void print(int n)
         {
