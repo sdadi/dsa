@@ -52,8 +52,13 @@
 
             //Trees2.LevelOrder();
             //Trees2.RightViewofBinaryTree();
-            Trees2.VerticalOrderTraversal();
+            //Trees2.VerticalOrderTraversal();
             //Trees2.IsBalancedBinaryTree();
+
+            //Trees2.TopViewOfBinaryTree();
+            //Trees2.SerializeBinaryTree();
+            //Trees2.DeserializeBinaryTree();
+            Trees2.ZigZagLevelOrderBT();
         }
 
         static void LinkedListMethods()

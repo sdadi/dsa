@@ -1,4 +1,5 @@
-﻿using System.Transactions;
+﻿using System.Text;
+using System.Transactions;
 
 namespace _3Advanced
 {
@@ -26,16 +27,16 @@ namespace _3Advanced
             queue.Enqueue(root);
             int i = 1;
 
-            while (queue.Count > 0)
+            while (queue.Count > 0 && i < input.Count)
             {
                 var current = queue.Dequeue();
-                if (input[i] != -1)
+                if (i < input.Count && input[i] != -1)
                 {
                     current.left = new TreeNode(input[i]);
                     queue.Enqueue(current.left);
                 }
                 i += 1;
-                if (input[i] != -1)
+                if (i < input.Count && input[i] != -1)
                 {
                     current.right = new TreeNode(input[i]);
                     queue.Enqueue(current.right);
@@ -45,6 +46,25 @@ namespace _3Advanced
 
 
             return root;
+        }
+        public static string TreeToLevelOrderString(this TreeNode root)
+        {
+            var result = new StringBuilder();
+            var queue = new Queue<TreeNode>();
+            queue.Enqueue(root);
+
+            while(queue.Count > 0)
+            {
+                var current = queue.Dequeue();
+                int val = current == null ? -1 : current.val;
+                result.Append($"{val}, ");
+                if(current != null)
+                {
+                    queue.Enqueue(current.left);
+                    queue.Enqueue(current.right);
+                }
+            }
+            return result.ToString().TrimEnd();
         }
     }
 }
