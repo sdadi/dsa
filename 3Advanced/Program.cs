@@ -58,7 +58,10 @@
             //Trees2.TopViewOfBinaryTree();
             //Trees2.SerializeBinaryTree();
             //Trees2.DeserializeBinaryTree();
-            Trees2.ZigZagLevelOrderBT();
+            //Trees2.ZigZagLevelOrderBT();
+
+            //Trees3.SearchBST();
+            Trees3.ValidateBST();
         }
 
         static void LinkedListMethods()
