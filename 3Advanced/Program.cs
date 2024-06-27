@@ -61,13 +61,24 @@
             //Trees2.ZigZagLevelOrderBT();
 
             //Trees3.SearchBST();
-            Trees3.ValidateBST();//TODO
+            //Trees3.ValidateBST();
             //Trees3.SortedArrayToBST();
             //Trees3.DeleteinBST();
 
             //Trees3.TwoSumBST();
             //Trees3.BSTNodesInRange();
             //Trees3.CheckForBSTwithOneChild();
+
+            //Trees4.MorrisInorderTraversal();
+            //Trees4.KthSmallestElementInBST();
+            //Trees4.RecoverBST();
+
+            //Trees4.DistanceBetween2NodesInBST();
+            Trees4.SumOfCommonNodesInBST();
+
+            //Trees5.EqualTreePartition();
+            //Trees5.PathSum();
+            //Trees5.DiameterOfBST();
         }
 
         static void LinkedListMethods()

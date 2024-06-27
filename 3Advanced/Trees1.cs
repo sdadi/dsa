@@ -21,13 +21,14 @@ namespace _3Advanced
             var result = new List<int>();
 
             //PreOrderRecursive(root, result);
-            PreOrderIteration(root, result);
+            result = PreOrderIteration(root);
 
             result.PrintArray();
         }
 
-        private static void PreOrderIteration(TreeNode root, List<int> result)
+        private static List<int> PreOrderIteration(TreeNode root)
         {
+            List<int> result = new List<int>();
             var current = root;
             var stack = new Stack<TreeNode>();
 
@@ -45,6 +46,7 @@ namespace _3Advanced
                     current = current.right;
                 }
             }
+            return result;
         }
         private static void PreOrderRecursive(TreeNode root, List<int> result)
         {
@@ -70,12 +72,13 @@ namespace _3Advanced
             root.right = new TreeNode(2);
             root.right.left = new TreeNode(3);//  [1, 3, 2]
 
+
+            var result = new List<int>();
             if (root == null)
             {
-                (new List<int>()).PrintArray();
+                result.PrintArray();
                 return;
             }
-            var result = new List<int>();
             var stack = new Stack<TreeNode>();
 
             var current = root;
@@ -167,7 +170,7 @@ namespace _3Advanced
             var root = BinaryTreeFrom_IO_PO(A, dict, B, 0, A.Count - 1, 0, B.Count - 1);
             var result = new List<int>();
 
-            PreOrderIteration(root, result);
+            result = PreOrderIteration(root);
             result.PrintArray();
         }
 
