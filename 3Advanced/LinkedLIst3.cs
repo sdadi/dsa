@@ -56,26 +56,26 @@ namespace _3Advanced
             {
                 tempB = tempB.next;
             }
-            tempB.next = C; 
+            tempB.next = C;
             #endregion
 
-            if(A == null || B == null)
+            if (A == null || B == null)
             {
                 Console.WriteLine("NULL - no intersection");
                 return;
             }
 
-            int countA =0, countB =0;
+            int countA = 0, countB = 0;
 
             ListNode current = A;
-            while(current != null)
+            while (current != null)
             {
                 countA++;
                 current = current.next;
             }
 
             current = B;
-            while(current != null)
+            while (current != null)
             {
                 countB++;
                 current = current.next;
@@ -101,7 +101,7 @@ namespace _3Advanced
                 }
             }
 
-            while (nodeA !=null && nodeB != null)
+            while (nodeA != null && nodeB != null)
             {
                 if (nodeA == nodeB)
                     break;
@@ -126,8 +126,8 @@ namespace _3Advanced
 
             #region 6 -> 1 S 2 1 S 2 2 G 2 S 1 1 S 4 1 G 2
             LRUCache cache = new LRUCache(1);
-            cache.set(2,1);
-            cache.set(2,2);
+            cache.set(2, 1);
+            cache.set(2, 2);
             Console.WriteLine(cache.get(2));
             cache.set(1, 1);
             cache.set(4, 1);
@@ -202,7 +202,51 @@ namespace _3Advanced
         /// </summary>
         public static void FlattenLinkedList()
         {
+            List<int> row1 = [1, 2, 3, 4, 5, 6];
+            List<int> row2 = [7, 8, 9, 10];
+            List<int> row3 = [11, 12];
 
+            var head = row1.ListToDoubleNode();
+            var r2 = row2.ListToDoubleNode();
+            var r3 = row3.ListToDoubleNode();
+
+            var current = r2;
+            while (current != null)
+            {
+                if (current.val == 8)
+                    current.child = r3;
+                current = current.next;
+            }
+            current = head;
+            while (current != null)
+            {
+                if (current.val == 3)
+                    current.child = r2;
+                current = current.next;
+            }
+
+            current = head;
+            var stack = new Stack<DoubleListNode>();
+
+            while (current != null || stack.Count > 0)
+            {
+                if (current.child != null)
+                {
+                    stack.Push(current.next);
+                    current.next = current.child;
+                    if (current.child != null)
+                        current.child.prev = current;
+                }
+                else if (current.next == null && stack.Count > 0)
+                {
+                    var temp = stack.Pop();
+                    current.next = temp;
+                    temp.prev = current;
+                }
+                current = current.next;
+            }
+
+            head.PrintDoubleLinkedList();
         }
     }
 }

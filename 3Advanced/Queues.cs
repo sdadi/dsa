@@ -1,4 +1,9 @@
 ﻿using Helpers;
+using System.Drawing;
+using System.Reflection;
+using System;
+using System.Text;
+using System.Xml.Linq;
 
 namespace _3Advanced
 {
@@ -61,14 +66,14 @@ namespace _3Advanced
                 result.Add(front);
                 i++;
 
-                queue.Enqueue(front+"1");
-                queue.Enqueue(front+"2");
+                queue.Enqueue(front + "1");
+                queue.Enqueue(front + "2");
             }
 
             string temp = result[A - 1];
-            var t = string.Join("",temp.ToString().Reverse());
+            var t = string.Join("", temp.ToString().Reverse());
 
-            Console.WriteLine(temp+temp.Reverse());
+            Console.WriteLine(temp + temp.Reverse());
         }
 
         /// <summary>
@@ -88,7 +93,7 @@ namespace _3Advanced
             queue.Enqueue("2");
             queue.Enqueue("3");
             int i = 0;
-            while(i < A)
+            while (i < A)
             {
                 string front = queue.Dequeue();
                 result.Add(Convert.ToInt32(front));
@@ -133,9 +138,9 @@ namespace _3Advanced
             var queue = new QueueWithDoubleLinkedList();
 
 
-            for(int i = 0; i < B; i++)
+            for (int i = 0; i < B; i++)
             {
-                while(!queue.IsEmpty() && A[queue.PeekRear()] < A[i])
+                while (!queue.IsEmpty() && A[queue.PeekRear()] < A[i])
                 {
                     queue.DequeueRear();
                 }
@@ -151,7 +156,7 @@ namespace _3Advanced
                 }
                 queue.EnqueueRear(i);
 
-                if(queue.PeekFront() == i - B)
+                if (queue.PeekFront() == i - B)
                 {
                     queue.DequeueFront();
                 }
@@ -180,15 +185,112 @@ namespace _3Advanced
             B = 1;
 
             var queue = new Queue<int>();
-            for(int i=0; i < B; i++)
+            for (int i = 0; i < B; i++)
             {
-                queue.Enqueue(A[i]);   
+                queue.Enqueue(A[i]);
             }
-            for(int i=B-1;i >= 0; i--)
+            for (int i = B - 1; i >= 0; i--)
             {
                 A[i] = queue.Dequeue();
             }
             A.PrintArray();
+        }
+
+
+        public static void UniqueLetter()
+        {
+            string A = "abcabc";
+            A = "gu";
+
+            var result = new StringBuilder();
+            var queue = new Queue<char>();
+            var map = new Dictionary<char, int>();
+
+            for (int i = 0; i < A.Length; i++)
+            {
+                queue.Enqueue(A[i]);
+                if (!map.ContainsKey(A[i]))
+                    map.Add(A[i], 0);
+                map[A[i]]++;
+
+                while (queue.Count > 0 && map[queue.Peek()] > 1)
+                    queue.Dequeue();
+                if(queue.Count > 0)
+                    result.Append(queue.Peek());
+                else result.Append("#");
+            }
+
+            Console.WriteLine(result.ToString());
+        }
+
+        /// <summary>
+        /// Given an array A of both positive and negative integers.
+        /// Your task is to compute the sum of minimum and maximum elements of all sub-array of size B.
+        /// NOTE: Since the answer can be very large, you are required to return the sum modulo 10^9 + 7.
+        /// Problem Constraints
+        /// 1 <= size of array A <= 10^5
+        /// -10^9 <= A[i] <= 10^9
+        /// 1 <= B <= size of array
+        /// </summary>
+        public static void SumOfMinMax()
+        {
+            List<int> A = [2, 5, -1, 7, -3, -1, -2];
+            int B = 4;//18
+
+            A = [2, -1, 3];
+            B = 2;//3
+
+            int mod = 1000000007;
+            var maxList = new List<int>();
+            var minList = new List<int>();
+            var dq = new QueueWithDoubleLinkedList();
+
+            for (int i = 0; i < B; i++)
+            {
+                while (!dq.IsEmpty() && A[dq.PeekRear()] < A[i])
+                    dq.DequeueRear();
+                dq.EnqueueRear(i);
+            }
+            maxList.Add(A[dq.PeekFront()]);
+
+            for(int i = B; i < A.Count; i++)
+            {
+                while (!dq.IsEmpty() && A[dq.PeekRear()] < A[i])
+                    dq.DequeueRear();
+                dq.EnqueueRear(i);
+
+                if (dq.PeekFront() == B - i)
+                    dq.DequeueFront();
+                maxList.Add(A[dq.PeekFront()]);
+            }
+
+            dq = new QueueWithDoubleLinkedList();
+            for (int i = 0; i < B; i++)
+            {
+                while (!dq.IsEmpty() && A[dq.PeekRear()] > A[i])
+                    dq.DequeueRear();
+                dq.EnqueueRear(i);
+            }
+            minList.Add(A[dq.PeekFront()]);
+
+            for (int i = B; i < A.Count; i++)
+            {
+                while (!dq.IsEmpty() && A[dq.PeekRear()] > A[i])
+                    dq.DequeueRear();
+                dq.EnqueueRear(i);
+
+                if (dq.PeekFront() == B - i)
+                    dq.DequeueFront();
+                minList.Add(A[dq.PeekFront()]);
+            }
+
+            var sum = 0;
+            for(int i = 0; i < maxList.Count; i++)
+            {
+                sum = (sum % mod + maxList[i] % mod + minList[i] % mod)%mod;
+            }
+
+            Console.WriteLine(sum);
         }
     }
 }

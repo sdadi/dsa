@@ -26,6 +26,7 @@
             //LinkedLIst3.IntersectionOfLinkedList();
             //LinkedLIst3.LRUCheck();
             //LinkedLIst3.PartitionListLessthanB();
+            //LinkedLIst3.FlattenLinkedList();
 
             //Stack1.BalancedParanthesis();
             //Stack1.DoubleCharacterTrouble();
@@ -43,6 +44,8 @@
             //Queues.NIntegersContainingOnly123();
             //Queues.ParkingIceCreamTruck();
             //Queues.ReverseBItemsInQueue();
+            //Queues.UniqueLetter();
+            Queues.SumOfMinMax();
 
             //Trees1.PreOrderTraversal();
             //Trees1.InOrderTraversal();
@@ -74,11 +77,14 @@
             //Trees4.RecoverBST();
 
             //Trees4.DistanceBetween2NodesInBST();
-            Trees4.SumOfCommonNodesInBST();
+            //Trees4.SumOfCommonNodesInBST();
 
             //Trees5.EqualTreePartition();
             //Trees5.PathSum();
             //Trees5.DiameterOfBST();
+
+            //Trees5.IdenticalBinaryTrees();
+            //Trees5.SumBinaryTreeOrNot();
         }
 
         static void LinkedListMethods()

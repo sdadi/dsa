@@ -1,9 +1,8 @@
 ﻿using System.Drawing;
-using static System.Net.Mime.MediaTypeNames;
+using System.Security.Cryptography;
 using static System.Runtime.InteropServices.JavaScript.JSType;
-using System.Reflection;
 using System.Xml.Linq;
-using System.Collections.Frozen;
+using System.Security;
 
 namespace _3Advanced
 {
@@ -122,9 +121,9 @@ namespace _3Advanced
         {
             if (root == null)
                 return false;
-            if(root.left == null && root.right == null)
+            if (root.left == null && root.right == null)
                 return (B == root.val);
-            return CheckSum(root.left,B - root.val) || CheckSum(root.right,B - root.val);
+            return CheckSum(root.left, B - root.val) || CheckSum(root.right, B - root.val);
         }
         /// <summary>
         /// Given a binary tree,
@@ -151,17 +150,17 @@ namespace _3Advanced
             while (queue.Count > 0)
             {
                 current = queue.Dequeue();
-                
-                if(current.left != null) queue.Enqueue(current.left);
-                if(current.right != null) queue.Enqueue(current.right);
 
-                if(current != last)
+                if (current.left != null) queue.Enqueue(current.left);
+                if (current.right != null) queue.Enqueue(current.right);
+
+                if (current != last)
                 {
                     current.next = queue.Peek();
                 }
-                if(current == last)
+                if (current == last)
                 {
-                    if(queue.Count > 0)
+                    if (queue.Count > 0)
                         last = queue.Last();
                 }
             }
@@ -182,7 +181,7 @@ namespace _3Advanced
             var root = input.ListToTree<int>();
 
             int diameter = 0;
-            HeightOfNode(root,ref diameter);
+            HeightOfNode(root, ref diameter);
 
             Console.WriteLine(diameter);
 
@@ -193,10 +192,166 @@ namespace _3Advanced
             int lH = HeightOfNode(root.left, ref diameter);
             int rH = HeightOfNode(root.right, ref diameter);
 
-            diameter = Math.Max(diameter,(lH + rH + 2));
+            diameter = Math.Max(diameter, (lH + rH + 2));
             //for nodes add +1, for edges add +2//current solution is for counting edges
 
             return Math.Max(lH, rH) + 1;
+        }
+
+        /// <summary>
+        /// Given a binary tree A, invert the binary tree and return it.
+        /// Inverting refers to making the left child the right child and vice versa.
+        /// Problem Constraints
+        /// 1 <= size of tree <= 100000
+        /// </summary>
+        public static void InvertBinaryTree()
+        {
+            List<int> input = [1, 2, 3];
+            //input = [1, 2, 3, 4, 5, 6, 7];
+            var A = input.ListToTree<int>();
+
+            InvertBTree(A);
+        }
+        private static void InvertBTree(TreeNode A)
+        {
+            if (A == null) return;
+
+            var temp = A.left;
+            A.left = A.right;
+            A.right = temp;
+            InvertBTree(A.left);
+            InvertBTree(A.right);
+        }
+
+        /// <summary>
+        /// Given two binary trees, check if they are equal or not.
+        /// Two binary trees are considered equal if they are structurally identical and the nodes have the same value.
+        /// Problem Constraints
+        /// 1 <= number of nodes <= 10^5
+        /// </summary>
+        public static void IdenticalBinaryTrees()
+        {
+            List<int> inputA = [1, 2, 3];
+            List<int> inputB = [1, 2, 3];
+
+            //inputA = [1, 2, 3];
+            //inputB = [1, 3, 2];
+
+            inputA = [5, 10, -1, -1, -1];
+            inputB = [5, -1, -1];
+
+            var A = inputA.ListToTree<int>();
+            var B = inputB.ListToTree<int>();
+
+            var result = IdenticalTree(A, B);
+            Console.WriteLine(result ? 1 : 0);
+
+            result = IdenticalTreeIteration(A, B);
+            Console.WriteLine(result ? 1 : 0);
+        }
+        private static bool IdenticalTreeIteration(TreeNode A, TreeNode B)
+        {
+            var qA = new Queue<TreeNode>();
+            var qB = new Queue<TreeNode>();
+            qA.Enqueue(A);
+            qB.Enqueue(B);
+            bool result = true;
+
+            var currentA = A;
+            var currentB = B;
+            var lastA = A;
+            var lastB = B;
+
+            while (qA.Count > 0 && qB.Count > 0)
+            {
+                currentA = qA.Dequeue();
+                currentB = qB.Dequeue();
+                if (currentA == null && currentB == null)
+                    continue;
+
+                if (currentA.val != currentB.val)
+                {
+                    result = false; break;
+                }
+                if (currentA.left != null && currentB.left != null)
+                {
+                    qA.Enqueue(currentA.left);
+                    qB.Enqueue(currentB.left);
+                }
+                else if (currentA.left == null && currentB.left == null)
+                {
+
+                }
+                else
+                {
+                    result = false; break;
+                }
+                if (currentA.right != null && currentB.right != null)
+                {
+                    qA.Enqueue(currentA.right);
+                    qB.Enqueue(currentB.right);
+                }
+                else if (currentA.right == null && currentB.right == null)
+                {
+
+                }
+                else
+                {
+                    result = false; break;
+                }
+
+                if (lastA == currentA && qA.Count > 0)
+                {
+                    lastA = qA.Last();
+                }
+                if (lastB == currentB && qB.Count > 0)
+                {
+                    lastB = qB.Last();
+                }
+            }
+            return result;
+        }
+        private static bool IdenticalTree(TreeNode A, TreeNode B)
+        {
+            if (A == null && B == null) return true;
+            else if(A == null ||  B == null) return false;
+
+            return (A.val == B.val) && IdenticalTree(A.left, B.left) && IdenticalTree(A.right, B.right);
+        }
+
+        /// <summary>
+        /// Given a binary tree. Check whether the given tree is a Sum-binary Tree or not.
+        /// Sum-binary Tree is a Binary Tree where the value of a every node is equal to sum of the nodes present in its left subtree and right subtree.
+        /// An empty tree is Sum-binary Tree and sum of an empty tree can be considered as 0. A leaf node is also considered as SumTree.
+        /// Return 1 if it sum-binary tree else return 0.
+        /// Problem Constraints
+        /// 1 <= length of the array <= 100000
+        /// 0 <= node values <= 50
+        /// </summary>
+        public static void SumBinaryTreeOrNot()
+        {
+
+            List<int> input = [26, 10, 3, 4, 6, -1, 3];
+            //input = [26, 10, 3, 4, 6, -1, 4];
+            input = [10, 4, 2, 2, 2, -1, -1, -1, -1, -1, -1];
+            var A = input.ListToTree<int>();
+
+            int sum = NodeSum(A);
+            Console.WriteLine(sum <= 0 ? 0 : 1);
+        }
+        private static int NodeSum(TreeNode root)
+        {
+            if (root == null)
+                return 0;
+            int left = NodeSum(root.left);
+            int right = NodeSum(root.right);
+
+            if (left == 0 && right == 0)
+                return root.val;
+            else if (left + right == root.val)
+                return 2 * root.val;
+            else
+                return int.MinValue;
         }
     }
 }

@@ -29,7 +29,7 @@ namespace fundamental
             //UnSortedArray.KthSmallest();
             //UnSortedArray.MaxProfitInArray();
             //UnSortedArray.MaxProfitBuySellDay();
-            //UnSortedArray.RotateArrayKtimes();
+            UnSortedArray.RotateArrayKtimes();
             //UnSortedArray.MagicIndexusingPrefixSum();
             //UnSortedArray.EquilibriumIndex();
             //ArrayCarryForward.PairsCount();
