@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection;
 using System.Xml.Linq;
+using System.Collections;
 
 namespace _3Advanced
 {
@@ -206,6 +207,10 @@ namespace _3Advanced
             List<int> row2 = [7, 8, 9, 10];
             List<int> row3 = [11, 12];
 
+            row1 = [1];
+            row2 = [2];
+            row3 = [3];
+
             var head = row1.ListToDoubleNode();
             var r2 = row2.ListToDoubleNode();
             var r3 = row3.ListToDoubleNode();
@@ -232,21 +237,120 @@ namespace _3Advanced
             {
                 if (current.child != null)
                 {
-                    stack.Push(current.next);
+                    if (current.next != null)
+                    {
+                        current.next.prev = null;
+                        stack.Push(current.next);
+                    }
+
                     current.next = current.child;
-                    if (current.child != null)
-                        current.child.prev = current;
+                    current.child.prev = current;
+                    current.child = null;
                 }
                 else if (current.next == null && stack.Count > 0)
                 {
                     var temp = stack.Pop();
                     current.next = temp;
-                    temp.prev = current;
+                    if (temp != null)
+                        temp.prev = current;
                 }
                 current = current.next;
             }
 
             head.PrintDoubleLinkedList();
+        }
+
+        /// <summary>
+        /// Given a linked list where every node represents a linked list and contains two pointers of its type:
+        /// Pointer to next node in the main list(right pointer)
+        /// Pointer to a linked list where this node is head(down pointer). All linked lists are sorted.
+        /// You are asked to flatten the linked list into a single list.Use down pointer to link nodes of the flattened list.
+        /// The flattened linked list should also be sorted.
+        /// Problem Constraints
+        /// 1 <= Total nodes in the list <= 100000
+        /// 1 <= Value of node <= 10^9
+        /// </summary>
+        public static void FlattenSortedLinkedList()
+        {
+            List<int> line1 = [3, 4, 20, 20, 30];
+            List<int> line2 = [7, 7, 8];
+            List<int> line3 = [11];
+            List<int> line4 = [22];
+            List<int> line5 = [20, 28, 39];
+            List<int> line6 = [31, 39];
+
+            var root = line1.ListToDoubleNode();
+            var current = root;
+            while (current != null)
+            {
+                if (current.val == 3)
+                    current.child = line2.ListToDoubleNode();
+                else if (current.val == 4)
+                    current.child = line3.ListToDoubleNode();
+                else if (current.val == 20)
+                    current.child = line4.ListToDoubleNode();
+                else if (current.val == 20)
+                    current.child = line5.ListToDoubleNode();
+                else if (current.val == 30)
+                    current.child = line6.ListToDoubleNode();
+                current = current.next;
+            }
+
+            current = root;
+            var queue = new Queue<DoubleListNode>();
+
+            while(current != null)
+            {
+                if(current.child != null)
+                {
+                    var child = current.child;
+                    current.child = null;
+                    queue.Enqueue(child);
+                }
+                current = current.next;
+            }
+            while(queue.Count > 0)
+            {
+                var child = queue.Dequeue();
+                MergeSortedList(root, child);
+            }
+            root.PrintDoubleLinkedList();
+        }
+        private static DoubleListNode MergeSortedList(DoubleListNode A, DoubleListNode B)
+        {
+            if (A == null) return B;
+            if (B == null) return A;
+
+            DoubleListNode head = null;
+            if (A.val < B.val)
+            {
+
+                head = A;
+                A = A.next;
+            } else
+            {
+                head = B;
+                B = B.next;
+            }
+            var current = head;
+            while (A != null && B != null)
+            {
+                if (A.val < B.val)
+                {
+                    current.next = A;
+                    A = A.next;
+                }else
+                {
+                    current.next = B;
+                    B = B.next;
+                }
+                current = current.next;
+            }
+            if (A != null)
+                current.next = A;
+            if (B != null)
+                current.next = B;
+            return head;
         }
     }
 }

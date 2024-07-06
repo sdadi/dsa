@@ -215,7 +215,7 @@ namespace _3Advanced
 
                 while (queue.Count > 0 && map[queue.Peek()] > 1)
                     queue.Dequeue();
-                if(queue.Count > 0)
+                if (queue.Count > 0)
                     result.Append(queue.Peek());
                 else result.Append("#");
             }
@@ -237,60 +237,99 @@ namespace _3Advanced
             List<int> A = [2, 5, -1, 7, -3, -1, -2];
             int B = 4;//18
 
-            A = [2, -1, 3];
-            B = 2;//3
-
+            //A = [2, -1, 3];
+            //B = 2;//3
+            
             int mod = 1000000007;
             var maxList = new List<int>();
             var minList = new List<int>();
-            var dq = new QueueWithDoubleLinkedList();
+            var dqMax = new QueueWithDoubleLinkedList();
+            var dqMin = new QueueWithDoubleLinkedList();
+            var sum = 0;
 
             for (int i = 0; i < B; i++)
             {
-                while (!dq.IsEmpty() && A[dq.PeekRear()] < A[i])
-                    dq.DequeueRear();
-                dq.EnqueueRear(i);
-            }
-            maxList.Add(A[dq.PeekFront()]);
+                while (!dqMax.IsEmpty() && A[dqMax.PeekRear()] < A[i])
+                    dqMax.DequeueRear();
+                dqMax.EnqueueRear(i);
 
-            for(int i = B; i < A.Count; i++)
-            {
-                while (!dq.IsEmpty() && A[dq.PeekRear()] < A[i])
-                    dq.DequeueRear();
-                dq.EnqueueRear(i);
-
-                if (dq.PeekFront() == B - i)
-                    dq.DequeueFront();
-                maxList.Add(A[dq.PeekFront()]);
+                while (!dqMin.IsEmpty() && A[dqMin.PeekRear()] > A[i])
+                    dqMin.DequeueRear();
+                dqMin.EnqueueRear(i);
             }
-
-            dq = new QueueWithDoubleLinkedList();
-            for (int i = 0; i < B; i++)
-            {
-                while (!dq.IsEmpty() && A[dq.PeekRear()] > A[i])
-                    dq.DequeueRear();
-                dq.EnqueueRear(i);
-            }
-            minList.Add(A[dq.PeekFront()]);
+            sum = (sum % mod + A[dqMax.PeekFront()] % mod + A[dqMin.PeekFront()] % mod) % mod;
 
             for (int i = B; i < A.Count; i++)
             {
-                while (!dq.IsEmpty() && A[dq.PeekRear()] > A[i])
-                    dq.DequeueRear();
-                dq.EnqueueRear(i);
+                while (!dqMax.IsEmpty() && A[dqMax.PeekRear()] < A[i])
+                    dqMax.DequeueRear();
+                dqMax.EnqueueRear(i);
 
-                if (dq.PeekFront() == B - i)
-                    dq.DequeueFront();
-                minList.Add(A[dq.PeekFront()]);
-            }
+                if (dqMax.PeekFront() == B - i)
+                    dqMax.DequeueFront();
 
-            var sum = 0;
-            for(int i = 0; i < maxList.Count; i++)
-            {
-                sum = (sum % mod + maxList[i] % mod + minList[i] % mod)%mod;
+
+                while (!dqMin.IsEmpty() && A[dqMin.PeekRear()] > A[i])
+                    dqMin.DequeueRear();
+                dqMin.EnqueueRear(i);
+
+                if (dqMin.PeekFront() == B - i)
+                    dqMin.DequeueFront();
+
+
+                sum = (sum % mod + A[dqMax.PeekFront()] % mod + A[dqMin.PeekFront()] % mod) % mod;
             }
 
             Console.WriteLine(sum);
+        }
+
+        public int solve(List<int> A, int B)
+        {
+            int sum = 0;
+            int mod = 1000000007;
+
+            var dqMax = new QueueWithDoubleLinkedList();
+            var dqMin = new QueueWithDoubleLinkedList();
+
+            for (int i = 0; i < B; i++)
+            {
+                while (!dqMax.IsEmpty() && A[dqMax.PeekRear()] < A[i])
+                {
+                    dqMax.DequeueRear();
+                }
+                dqMax.EnqueueRear(i);
+
+                while (!dqMin.IsEmpty() && A[dqMin.PeekRear()] > A[i])
+                {
+                    dqMin.DequeueRear();
+                }
+                dqMin.EnqueueRear(i);
+            }
+            sum = (sum % mod + A[dqMax.PeekFront()] % mod + A[dqMin.PeekFront()] % mod) % mod;
+
+            for (int i = B; i < A.Count; i++)
+            {
+                while (!dqMax.IsEmpty() && A[dqMax.PeekRear()] < A[i])
+                {
+                    dqMax.DequeueRear();
+                }
+                dqMax.EnqueueRear(i);
+
+                if (dqMax.PeekFront() == B - i)
+                    dqMax.DequeueFront();
+
+                while (!dqMin.IsEmpty() && A[dqMin.PeekRear()] > A[i])
+                {
+                    dqMin.DequeueRear();
+                }
+                dqMin.EnqueueRear(i);
+
+                if (dqMin.PeekFront() == B - i)
+                    dqMin.DequeueFront();
+
+                sum = (sum % mod + A[dqMax.PeekFront()] % mod + A[dqMin.PeekFront()] % mod) % mod;
+            }
+            return sum;
         }
     }
 }

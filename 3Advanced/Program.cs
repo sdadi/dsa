@@ -27,6 +27,7 @@
             //LinkedLIst3.LRUCheck();
             //LinkedLIst3.PartitionListLessthanB();
             //LinkedLIst3.FlattenLinkedList();
+            LinkedLIst3.FlattenSortedLinkedList();
 
             //Stack1.BalancedParanthesis();
             //Stack1.DoubleCharacterTrouble();
@@ -45,7 +46,7 @@
             //Queues.ParkingIceCreamTruck();
             //Queues.ReverseBItemsInQueue();
             //Queues.UniqueLetter();
-            Queues.SumOfMinMax();
+            //Queues.SumOfMinMax();
 
             //Trees1.PreOrderTraversal();
             //Trees1.InOrderTraversal();
