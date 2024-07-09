@@ -10,10 +10,13 @@
             //HashingClass_3.SubArrayCountWithUniqueElements();
             //HashingClass_3.SortArrayIn_B_Order();
             //HashingClass_3.LongestSubArrayWithoutRepeat();
-            HashingClass_3.ColorfulNumber();
+            //HashingClass_3.ColorfulNumber();
 
 
             //HeapClass_1.BuildHeap();
+            //HeapClass_1.ConnectRopes();
+
+            Greedy.FlipkartChallengeInEffectiveInventoryManagement();
         }
     }
 }

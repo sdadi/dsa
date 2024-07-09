@@ -55,8 +55,7 @@ namespace _4Advanced
             int longest = 0;
             int N = A.Count;
             long sum = 0;
-            var map = new Dictionary<long, int>();
-            map.Add(0, -1);
+            var map = new Dictionary<long, int> { { 0, -1 } };
 
             for (int i = 0; i < N; i++)
             {

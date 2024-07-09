@@ -1,8 +1,40 @@
 ﻿using Helpers;
+using System;
+using System.Collections;
+using System.Collections.ObjectModel;
 namespace _4Advanced
 {
     internal class HeapClass_1
     {
+
+        /// <summary>
+        /// You are given an array A of integers that represent the lengths of ropes.
+        /// You need to connect these ropes into one rope.The cost of joining two ropes equals the sum of their lengths.
+        /// Find and return the minimum cost to connect these ropes into one rope.
+        /// Problem Constraints
+        /// 1 <= length of the array <= 100000
+        /// 1 <= A[i] <= 1000
+        /// </summary>
+        public static void ConnectRopes()
+        {
+            int[] A = [1, 2, 3, 4, 5];//33
+
+            //A = [5, 17, 100, 11];//182
+            var heap = new MinHeapClass(A);
+            A = heap.BuildHeap();
+
+            int sum = 0, a = 0, b = 0;
+
+            while(heap.Count > 1)
+            {
+                a = heap.GetMin();
+                b = heap.GetMin();
+                sum += a + b;
+                heap.Insert(a+b);
+            }
+            
+            Console.WriteLine(sum);
+        }
         /// <summary>
         /// Given an array A of N integers, convert that array into a min heap and return the array.
         /// NOTE: A min heap is a binary tree where every node has a value less than or equal to its children.
