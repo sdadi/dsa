@@ -1,14 +1,4 @@
 ﻿using Helpers;
-using System;
-using System.ComponentModel;
-using System.ComponentModel.Design.Serialization;
-using System.Diagnostics.Metrics;
-using System.Drawing;
-using System.Reflection.Emit;
-using System.Runtime.InteropServices;
-using System.Xml.Linq;
-using System.Xml.XPath;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace _3Advanced
 {
@@ -364,6 +354,45 @@ namespace _3Advanced
             }
             foreach (var level in result)
                 level.PrintArray();
+        }
+
+        public static void ReverseLevelOrder()
+        {
+            List<int> input = [3, 9, 20, -1, -1, 15, 7, -1, -1, -1, -1];//15 7 9 20 3 
+            input = [1, 6, 2, -1, -1, 3, -1];// [3, 6, 2, 1]
+
+            var A = input.ListToTree<int>();
+
+            var levelItems = new Stack<List<int>>();
+            var result = new List<int>();
+            var queue = new Queue<TreeNode>();
+
+            TreeNode current = A;
+            TreeNode last = A;
+            queue.Enqueue(A);
+
+            while (queue.Count > 0)
+            {
+                current = queue.Dequeue();
+                if (current.left != null)
+                    queue.Enqueue(current.left);
+                if (current.right != null)
+                    queue.Enqueue(current.right);
+
+                result.Add(current.val);
+                if (last == current)
+                {
+                    levelItems.Push(result);
+                    result = new List<int>();
+                    if(queue.Count > 0)
+                        last = queue.Last();
+                }
+            }
+            while(levelItems.Count > 0)
+            {
+                result.AddRange(levelItems.Pop());
+            }
+            result.PrintArray();
         }
     }
 }

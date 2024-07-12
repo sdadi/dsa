@@ -1,11 +1,4 @@
 ﻿using Helpers;
-using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.Design.Serialization;
-using System.Drawing;
-using System.Numerics;
-using System.Transactions;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace _3Advanced
 {

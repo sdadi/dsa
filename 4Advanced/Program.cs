@@ -15,8 +15,23 @@
 
             //HeapClass_1.BuildHeap();
             //HeapClass_1.ConnectRopes();
+            //HeapClass_1.MergeKSortedLists();
+            //HeapClass_1.HeapQueries();
 
-            Greedy.FlipkartChallengeInEffectiveInventoryManagement();
+            //HeapClass_2.KthLargestElement();
+            //HeapClass_2.KPlacesApartSorting();
+            //HeapClass_2.RunningMedian();
+
+            //Greedy.FlipkartChallengeInEffectiveInventoryManagement();
+            //Greedy.FinishMaximumJobs();
+            Greedy.SmallestNoOfCoins();
+
+            //DP_1.FibonacciNumber();
+            //DP_1.DistinctWaysOfStairsClimb();
+            //DP_1.MinimumNoOfSquares();
+            //DP_1.MaxSumWithoutAdjacentElements();
+            //DP_1.MaxProductSubarray();
+            //DP_1.WaysToDecode();
         }
     }
 }

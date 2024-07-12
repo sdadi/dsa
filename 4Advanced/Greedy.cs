@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace _4Advanced
 {
@@ -31,7 +33,7 @@ namespace _4Advanced
 
             var heap = new MinHeapClass();
             var list = new List<SalePair>();
-            for(int i=0;i<A.Count;i++)
+            for (int i = 0; i < A.Count; i++)
             {
                 list.Add(new SalePair(A[i], B[i]));
             }
@@ -41,23 +43,24 @@ namespace _4Advanced
             long profit = 0;
             for (int i = 0; i < list.Count; i++)
             {
-                if(T < list[i].expiry)
+                if (T < list[i].expiry)
                 {
-                    profit += list[i].price%mod;
+                    profit += list[i].price % mod;
                     heap.Insert(list[i].price);
                     T++;
                 }
-                else {
+                else
+                {
                     int root = heap.PeekMin();
-                    if(root != int.MinValue && list[i].price > root)
+                    if (root != int.MinValue && list[i].price > root)
                     {
-                        profit -= heap.GetMin()%mod;// remove min from heap
-                        profit += list[i].price%mod;
+                        profit -= heap.GetMin() % mod;// remove min from heap
+                        profit += list[i].price % mod;
                         heap.Insert(list[i].price);
                     }
                 }
             }
-            Console.WriteLine((int)(profit%mod));
+            Console.WriteLine((int)(profit % mod));
         }
         class SalePair
         {
@@ -77,5 +80,98 @@ namespace _4Advanced
                 return a.expiry - b.expiry;
             }
         }
+
+        /// <summary>
+        /// There are N jobs to be done, but you can do only one job at a time.
+        /// Given an array A denoting the start time of the jobs and an array B denoting the finish time of the jobs.
+        /// Your aim is to select jobs in such a way so that you can finish the maximum number of jobs.
+        /// Return the maximum number of jobs you can finish.
+        /// Problem Constraints
+        /// 1 <= N <= 10^5
+        /// 1 <= A[i] < B[i] <= 10^9
+        /// </summary>
+        public static void FinishMaximumJobs()
+        {
+            List<int> A = [1, 5, 7, 1]; //start time
+            List<int> B = [7, 8, 8, 8];//2 -- end time
+
+            A = [3, 2, 6];
+            B = [9, 8, 9];//1
+
+            var list = new List<JobPair>();
+            for (int i = 0; i < A.Count; i++)
+            {
+                list.Add(new JobPair(A[i], B[i]));
+            }
+            list.Sort(JobPair.Comparator);
+            int sum = 1;
+            int end = list[0].end;
+
+            for (int i = 1; i < A.Count; i++)
+            {
+                if (list[i].start >= end)
+                {
+                    sum++;
+                    end = list[i].end;
+                }
+            }
+
+            Console.WriteLine(sum);
+        }
+        class JobPair
+        {
+            public int start;
+            public int end;
+            public JobPair(int s, int e) { start = s; end = e; }
+
+            public static int Comparator(JobPair a, JobPair b)
+            {
+                if (a.end == b.end)
+                    return a.start - b.start;
+                return a.end - b.end;
+            }
+        }
+
+        /// <summary>
+        /// The monetary system in DarkLand is really simple and systematic. 
+        /// The locals-only use coins. The coins come in different values. The values used are:
+        /// 1, 5, 25, 125, 625, 3125, 15625, ...
+        /// Formally, for each K >= 0 there are coins worth 5K.
+        /// Given an integer A denoting the cost of an item, 
+        /// find and return the smallest number of coins necessary to pay exactly the cost of the item
+        /// (assuming you have a sufficient supply of coins of each of the types you will need).
+        /// Problem Constraints
+        /// 1 <= A <= 2×10^9
+        /// </summary>
+        public static void SmallestNoOfCoins()
+        {
+            int A = 47;//7
+            //A = 9;//5
+            //A = 33;//5
+            //A = 3125;//1
+
+
+            int count = 0; 
+            int mod = 1;
+            //while (mod * 5 <= A)
+            //{
+            //    mod *= 5;
+            //}
+            //while (A > 0)
+            //{
+            //    count += A / mod;
+            //    A = A % mod;
+            //    mod /= 5;
+            //} ;
+
+            while(A >= 1)
+            {
+                count += A % 5;
+                A = A / 5;
+            }
+
+            Console.WriteLine(count);
+        }
+
     }
 }

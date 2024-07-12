@@ -107,17 +107,17 @@ namespace Intermediate
 
             while(odd !=null && even != null)
             {
-                //var next = odd.next;
-                //odd.next = even;
-                //even.next = next;
-                //odd = even.next;
-                current.next = odd;
-                if(current.next != null)
-                    current.next.
-                odd = odd.next;
-                current = current.next;
-                current.next = even;
-                even = even.next;
+                ////var next = odd.next;
+                ////odd.next = even;
+                ////even.next = next;
+                ////odd = even.next;
+                //current.next = odd;
+                //if(current.next != null)
+                //    current.next.
+                //odd = odd.next;
+                //current = current.next;
+                //current.next = even;
+                //even = even.next;
             }
             if (odd != null)
                current.next = odd;

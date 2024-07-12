@@ -24,7 +24,10 @@ namespace Intermediate
             //Contest4.RemoveLoopFromLinkedList();
 
             //Contest4_2.ContainerWithMostWater();
-            Contest4_2.ReverseEvenNodes();
+            //Contest4_2.ReverseEvenNodes();
+
+            //Contest5.WinnerStone();
+            Contest5.MaxDistanceOfHouseColor();
         }
         static void print(int n)
         {
