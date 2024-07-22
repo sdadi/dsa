@@ -1,4 +1,8 @@
-﻿namespace Intermediate
+﻿using _3Advanced;
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
+
+namespace Intermediate
 {
     internal class Contest5
     {
@@ -31,8 +35,30 @@
 
         public static void MinimizeHeightOfBinaryTree()
         {
-        }
+            List<int> input = [1, 2, 3, 4, 5, -1, -1, -1, -1, 11, 7];//11+7=18
+            input = [5, 4, 7, 1, -1, -1, 8];//0
 
+            TreeNode A = input.ListToTree<int>();
+
+            int N = NodesCount(A);
+            int height = (int)Math.Log2(N);
+            int sum = 0;
+            TreeTraversal(A, 0, height, ref sum);
+            Console.WriteLine(sum);
+        }
+        private static void TreeTraversal(TreeNode root,int level, int height,ref int sum)
+        {
+            if(root == null) return;
+            if (level > height) sum += root.val;
+
+            TreeTraversal(root.left,level+1,height,ref sum);
+            TreeTraversal(root.right,level+1,height,ref sum);
+        }
+        private static int NodesCount(TreeNode root)
+        {
+            if(root == null) return 0;
+            return 1+ NodesCount(root.left) + NodesCount(root.right);
+        }
         public static void WinnerStone()
         {
             List<int> A = [1, 2, 3, 4, 5];//1

@@ -27,7 +27,8 @@ namespace Intermediate
             //Contest4_2.ReverseEvenNodes();
 
             //Contest5.WinnerStone();
-            Contest5.MaxDistanceOfHouseColor();
+            //Contest5.MaxDistanceOfHouseColor();
+            Contest5.MinimizeHeightOfBinaryTree();
         }
         static void print(int n)
         {

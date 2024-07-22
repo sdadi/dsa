@@ -188,7 +188,7 @@ namespace _4Advanced
                 {
                     dp[i] += dp[i - 2];
                 }
-                else if( A[i-2] == '2' && A[i-1] > '0' &&A[i-1] < '7')
+                else if( A[i-2] == '2' && A[i-1] >= '0' &&A[i-1] < '7')
                 {
                     dp[i] += dp[i - 2];
                 }
