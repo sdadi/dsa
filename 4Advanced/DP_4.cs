@@ -70,7 +70,7 @@ namespace _4Advanced
                 for (int j = 1; j <= B; j++)//sum of coins
                 {
                     if (A[i] <= j)
-                        dp[j] += dp[j - A[i]];
+                        dp[j] =  (dp[j]%mod + dp[j - A[i]]%mod)%mod;
                 }
             }
 

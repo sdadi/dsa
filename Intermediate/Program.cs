@@ -28,31 +28,12 @@ namespace Intermediate
 
             //Contest5.WinnerStone();
             //Contest5.MaxDistanceOfHouseColor();
-            Contest5.MinimizeHeightOfBinaryTree();
-        }
-        static void print(int n)
-        {
-            if (n == 0) return;
-            Console.WriteLine(n);
-            print(n - 1);
-        }
-        static void Contest1Run()
-        {
-            Console.WriteLine("-----     Problem: Toggle Case                       -----");
-            Contest_1.ToggleCase();
-            Console.WriteLine("\n\n\n-----     Problem: Count of Non Negative Profit      -----");
-            Contest_1.CountOfNonNegativeProfit();
-            Console.WriteLine("\n\n\n-----     Problem: Network Super Stream              -----");
-            Contest_1.SuperStream();
-        }
-        static void Contest2Run()
-        {
-            //Contest2.BenjaminAND();
-            //Contest2.MaxPossibleSubArraywithDecreasingDishes();
-            Contest1.SearchRowWiseColWiseSortedMatrix();
-        }
-        static void test()
-        {
+            //Contest5.MinimizeHeightOfBinaryTree();
+
+
+            /*mock interview 
+             * https://docs.google.com/document/d/19mWysmys4DdFfUtd97tCfiTziQuuubAxvSVRqvC2F5s/edit#heading=h.jiajinych0wd
+             */
 
         }
     }
