@@ -45,7 +45,7 @@
 
 
             //DP_4.CuttingARod();
-            //DP_4.CoinSumInfiniteUnique();
+            DP_4.CoinSumInfiniteUnique();
 
 
 
@@ -53,7 +53,13 @@
             //Graphs1.NumberOfIslands();
             //Graphs1.CyclicInDirectedGraph();
 
-            Graphs2.RottenOranges();
+            //Graphs2.RottenOranges();
+
+            //Graphs3.CommutableIslands();
+            //Graphs3.Dijkstra();
+            //Graphs3.ConstructionCost();
+
+            //Graphs3.DamagedRecords();
         }
 
         

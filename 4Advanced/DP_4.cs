@@ -59,20 +59,32 @@ namespace _4Advanced
             B = 458;//867621
 
             int N = A.Count;
-            var dp = new List<long>();
-            for (int i = 0; i <= B; i++)
-                dp.Add(0);
+            var dp = new List<int>(Enumerable.Repeat<int>(0,B+1));
+            //for (int i = 0; i <= B; i++)
+            //    dp.Add(0);
             dp[0] = 1;
-            int mod = 10000007;
+            int mod = 1000007;
 
+            #region Ordered Selection -> more combinations
+            //for (int i = 1; i <= B; i++)//sum of coins
+            //{
+            //    for (int j = 0; j < A.Count; j++)//index of array
+            //    {
+            //        if (A[j] <= i)
+            //            dp[i] = dp[i] + dp[i - A[j]];
+            //    }
+            //} 
+            #endregion
+            #region Unordered selection -> combination not repeated
             for (int i = 0; i < N; i++)//index of array
             {
                 for (int j = 1; j <= B; j++)//sum of coins
                 {
                     if (A[i] <= j)
-                        dp[j] =  (dp[j]%mod + dp[j - A[i]]%mod)%mod;
+                        dp[j] = (dp[j] % mod + dp[j - A[i]] % mod) % mod;
                 }
-            }
+            } 
+            #endregion
 
             Console.WriteLine((int)(dp[B]%mod));
         }

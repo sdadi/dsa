@@ -63,7 +63,7 @@
             //Trees2.SerializeBinaryTree();
             //Trees2.DeserializeBinaryTree();
             //Trees2.ZigZagLevelOrderBT();
-            Trees2.ReverseLevelOrder();
+            //Trees2.ReverseLevelOrder();
 
             //Trees3.SearchBST();
             //Trees3.ValidateBST();
@@ -81,7 +81,7 @@
             //Trees4.DistanceBetween2NodesInBST();
             //Trees4.SumOfCommonNodesInBST();
 
-            //Trees5.EqualTreePartition();
+            Trees5.EqualTreePartition();
             //Trees5.PathSum();
             //Trees5.DiameterOfBST();
 

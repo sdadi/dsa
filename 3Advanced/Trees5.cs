@@ -3,6 +3,7 @@ using System.Security.Cryptography;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Xml.Linq;
 using System.Security;
+using System.Reflection.Metadata;
 
 namespace _3Advanced
 {
@@ -17,7 +18,7 @@ namespace _3Advanced
         public static void EqualTreePartition()
         {
             List<int> input = [5, 3, 7, 4, 6, 5, 6];//true
-            input = [1, 2, 10, -1, -1, 20, 2];//false
+            //input = [1, 2, 10, -1, -1, 20, 2];//false
 
             var A = input.ListToTree<int>();
 
@@ -47,15 +48,29 @@ namespace _3Advanced
             {
                 current = A;
                 queue.Clear();
-                queue.Enqueue(current);
+                var stack = new Stack<TreeNode>();
                 long total = 0;
-                while (queue.Count > 0)
+                while (current != null || stack.Count > 0)
                 {
-                    current = queue.Dequeue();
-                    total += current.val;
-
+                    if (current == null)
+                    {
+                        current = stack.Pop();
+                        total += current.val;
+                        if (total == sum / 2)
+                        {
+                            result = true;
+                            break;
+                        }
+                        current = current.right;
+                    }
+                    else
+                    {
+                        stack.Push(current);
+                        current = current.left;
+                    }
                 }
             }
+            Console.WriteLine(result);
         }
         private static void EqualTreePartition_Recursive(TreeNode A)
         {
@@ -314,7 +329,7 @@ namespace _3Advanced
         private static bool IdenticalTree(TreeNode A, TreeNode B)
         {
             if (A == null && B == null) return true;
-            else if(A == null ||  B == null) return false;
+            else if (A == null || B == null) return false;
 
             return (A.val == B.val) && IdenticalTree(A.left, B.left) && IdenticalTree(A.right, B.right);
         }
