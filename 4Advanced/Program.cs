@@ -45,7 +45,8 @@
 
 
             //DP_4.CuttingARod();
-            DP_4.CoinSumInfiniteUnique();
+            //DP_4.CoinSumInfiniteUnique();
+            DP_4.Knapsack0_1();
 
 
 
