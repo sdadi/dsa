@@ -379,5 +379,35 @@ namespace _3Advanced
             //}
             //return H2;
         }
+
+
+
+        #region Swap Node Pairs
+        public static void SwapNodesInPairs()
+        {
+            List<int> input = [1, 2, 3, 4];
+
+            ListNode A = input.ListToListNode();
+
+            ListNode result = new ListNode(0);
+            var current = A;
+            var cur_result = result;
+
+            while (current != null && current.next != null)
+            {
+                var temp = current.next.next;
+                cur_result.next = current.next;
+                cur_result.next.next = current;
+                cur_result = cur_result.next.next;
+
+                current = temp;
+
+            }
+            cur_result.next = current;
+            result =  result.next;
+
+            result.PrintLinkedList();
+        }
+        #endregion
     }
 }

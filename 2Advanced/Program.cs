@@ -23,7 +23,8 @@ namespace _2Advanced
             //Searching2.RotatedArraySearch();
             //Searching2.AthMagicalNumber();
             //Searching2.SquareRoot();
-            //Searching2.MedianOf2SortedArrays();
+            Searching2.MedianOf2SortedArrays();
+            Searching2.MedianOfSortedArrays();
 
             //Searching3.PaintersBoard();
             //Searching3.SpecialInteger();

@@ -9,18 +9,62 @@ namespace _4Advanced
 {
     internal class DP_2
     {
+        #region N digit numbers
+        /// <summary>
+        /// Find out the number of A digit positive numbers, whose digits on being added equals to a given number B.
+        /// Note that a valid number starts from digits 1-9 except the number 0 itself.i.e.leading zeroes are not allowed.
+        /// Since the answer can be large, output answer modulo 1000000007
+        /// Problem Constraints
+        /// 1 <= A <= 1000
+        /// 1 <= B <= 10000
+        /// </summary>
+        public static void NDigitSum1()
+        {
+            int A = 2;
+            int B = 4;//4
+
+            //A = 1; B = 3;//1
+
+            int mod = 1000000007;
+            var dp = new List<List<int>>();
+            for (int i = 0; i <= A; i++)
+            {
+                dp.Add(new List<int>(Enumerable.Repeat<int>(0, B+1)));
+            }
+
+            for (int i = 1;i < 10 &&  i <= B; i++)
+            {
+                dp[1][i] = 1;
+            }
+
+            for (int i = 2; i <= A; i++)
+            {
+                for(int j=1; j <= B; j++)
+                {
+                    for(var d=0; d < 10; d++)
+                    {
+                        if(j >= d)
+                        {
+                            dp[i][j] = (dp[i][j] % mod + dp[i - 1][j - d] % mod) % mod;
+
+                        }
+                    }
+                }
+            }
+            Console.WriteLine(dp[A][B]);
+        }
         public static void NDigitSum()
         {
             int A = 2;
             int B = 4;//4
 
-            A = 1; B = 3;//1
+            //A = 1; B = 3;//1
 
             var dp = new List<List<int>>();
-            for(int i= 0; i < A; i++)
+            for (int i = 0; i < A; i++)
             {
                 var row = new List<int>();
-                for(int j=0; j < B; j++)
+                for (int j = 0; j < B; j++)
                 {
                     row.Add(-1);
                 }
@@ -31,7 +75,7 @@ namespace _4Advanced
             int ans = 0;
             for (int i = 1; i < 10; i++)
             {
-                ans += NDigitSumRecursive(dp, A-1, B-i);
+                ans += NDigitSumRecursive(dp, A - 1, B - i);
                 ans %= mod;
             }
             Console.WriteLine(ans);
@@ -39,7 +83,7 @@ namespace _4Advanced
 
         private static int NDigitSumRecursive(List<List<int>> dp, int digit, int sum)
         {
-            if(sum < 0) return 0;
+            if (sum < 0) return 0;
             if (digit == 0 && sum == 0) return 1;
             if (digit == 0) return 0;
             if (dp[digit][sum] != -1) return dp[digit][sum];
@@ -47,14 +91,15 @@ namespace _4Advanced
             int ans = 0;
             int mod = 1000000007;
 
-            for(int i = 0; i < 10; i++)
+            for (int i = 0; i < 10; i++)
             {
                 ans += NDigitSumRecursive(dp, digit - 1, sum - i);
                 ans %= mod;
             }
-             dp[digit][sum] = ans;
+            dp[digit][sum] = ans;
             return ans;
-        }
+        } 
+        #endregion
 
 
         /// <summary>

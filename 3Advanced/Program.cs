@@ -22,6 +22,7 @@
             //LinkedList2.AddTwoNumberofLists();
 
             //LinkedList2.ReorderLinkedList();
+            LinkedList2.SwapNodesInPairs();
 
             //LinkedLIst3.IntersectionOfLinkedList();
             //LinkedLIst3.LRUCheck();

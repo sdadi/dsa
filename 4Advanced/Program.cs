@@ -33,7 +33,8 @@
             //DP_1.MaxProductSubarray();
             //DP_1.WaysToDecode();
 
-            //DP_2.NDigitSum();
+            DP_2.NDigitSum();
+            DP_2.NDigitSum1();
             //DP_2.UniquePathsInGrid();
             //DP_2.DungeonPrincess();
             //DP_2.UniqueBSTCount();
@@ -46,7 +47,7 @@
 
             //DP_4.CuttingARod();
             //DP_4.CoinSumInfiniteUnique();
-            DP_4.Knapsack0_1();
+            //DP_4.Knapsack0_1();
 
 
 
