@@ -17,6 +17,7 @@
             //HeapClass_1.ConnectRopes();
             //HeapClass_1.MergeKSortedLists();
             //HeapClass_1.HeapQueries();
+            //HeapClass_1.MergeKSortedArrays();
 
             //HeapClass_2.KthLargestElement();
             //HeapClass_2.KPlacesApartSorting();
@@ -33,8 +34,8 @@
             //DP_1.MaxProductSubarray();
             //DP_1.WaysToDecode();
 
-            DP_2.NDigitSum();
-            DP_2.NDigitSum1();
+            //DP_2.NDigitSum();
+            //DP_2.NDigitSum1();
             //DP_2.UniquePathsInGrid();
             //DP_2.DungeonPrincess();
             //DP_2.UniqueBSTCount();
@@ -62,6 +63,8 @@
             //Graphs3.ConstructionCost();
 
             //Graphs3.DamagedRecords();
+
+            SampleQuestions.MinimumJumps();
         }
 
         

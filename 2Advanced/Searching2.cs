@@ -27,23 +27,19 @@ namespace _2Advanced
             A = [];
             B = [20];//20
 
-            A = [-50, -41, -40, -19, 5, 21, 28];
-            B = [-50, -21, -10];//-20.0
+            //A = [-50, -41, -40, -19, 5, 21, 28];
+            //B = [-50, -21, -10];//-20.0
 
-            int m1 = -1, m2 = -1;
-            int i = 0, j = 0;
             int N = A.Count, M = B.Count;
             int S = N + M;
             int size = S / 2;
+            int i = 0, j = 0, m1 = -1, m2 = -1;
 
             for (int count = 0; count <= size; count++)
             {
                 m2 = m1;
-                if (i < N && j < M)
-                {
-                    m1 = (A[i] < B[j]) ? A[i++] : B[j++];
-                }
-                else if (i < N)
+
+                if (i < N && (j >= M || A[i] < B[j]))
                 {
                     m1 = A[i++];
                 }
@@ -52,10 +48,12 @@ namespace _2Advanced
                     m1 = B[j++];
                 }
             }
-            if ((S) > 1 && S % 2 == 0)
-                Console.WriteLine($"{((decimal)(m1 + m2)) / 2}");
-            else
-                Console.WriteLine($"{((decimal)(m1))}");
+            double result = (double)m1;
+            if (S > 1 && S % 2 == 0)
+            {
+                result = ((double)(m1 + m2)) / 2;
+            }
+            Console.WriteLine(result);
         }
         #endregion
         public static void MedianOf2SortedArrays()
@@ -69,8 +67,16 @@ namespace _2Advanced
             A = [];
             B = [20];//20
 
-            A = [-50, -41, -40, -19, 5, 21, 28];
-            B = [-50, -21, -10];//-20.0
+            //A = [-50, -41, -40, -19, 5, 21, 28];
+            //B = [-50, -21, -10];//-20.0
+
+            A = [];
+            B = [-35, 5, 11, 34, 35];//11
+
+            A = [-35, 5, 11, 34, 35];
+            B = [1, 3, 6, 7, 8];//6.5
+            A = [1,2,3,4,5,6,7,8,9,10];
+            B = [11,12,13,14,15,16,17,18,19,20];
 
             int m = A.Count;
             int n = B.Count;

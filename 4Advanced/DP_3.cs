@@ -202,22 +202,18 @@ namespace _4Advanced
             sum = sum / 2;
 
             var dp = new List<List<int>>();
+
             for (int i = 0; i <= N; i++)
             {
-                var row = new List<int>();
-                for(int j = 0; j <= sum; j++)
-                {
-                    row.Add(0);
-                }
-                dp.Add(row);
+                dp.Add(new List<int>(Enumerable.Repeat<int>(0, sum + 1)));
             }
 
-            for(int i=1;i<=N; i++)
+            for (int i = 1; i <= N; i++)
             {
                 for (int j = 1; j <= sum; j++)
                 {
-                    if (j - A[i-1] == 0) dp[i][j] = 1;
-                    else if (j - A[i-1] > 0 && dp[i - 1][j - A[i-1]] > 0)
+                    if (j - A[i - 1] == 0) dp[i][j] = 1;
+                    else if (j - A[i - 1] > 0 && dp[i - 1][j - A[i - 1]] > 0)
                     {
                         if (dp[i - 1][j] > 0)
                             dp[i][j] = Math.Min(dp[i - 1][j], 1 + dp[i - 1][j - A[i - 1]]);
@@ -231,6 +227,27 @@ namespace _4Advanced
                 }
             }
             Console.WriteLine(dp[N][sum]);
+
+            #region Better approach
+            var result = new List<int>(Enumerable.Repeat(0, sum+1));
+            
+            for (int i = 0; i < A.Count; i++)
+            {
+                for (int j = sum; j >= A[i];j--)
+                {
+                    if (j - A[i] == 0)
+                        result[j] = 1;
+                    else if (result[j - A[i]] > 0)
+                    {
+                        if (result[j] > 0)
+                            result[j] = Math.Min(result[j], 1 + result[j - A[i]]);
+                        else
+                            result[j] = 1 + result[j - A[i]];
+                    }
+                }
+            }
+            Console.WriteLine(result[sum]);
+            #endregion
         }
     }
 }

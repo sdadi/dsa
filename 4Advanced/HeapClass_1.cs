@@ -72,6 +72,40 @@ namespace _4Advanced
             }
             result.next.PrintLinkedList();
         }
+        #region Merge K Sorted Arrays
+        public static void MergeKSortedArrays()
+        {
+            List<List<int>> input = [[ 1, 4, 7],
+                        [ 1, 3, 4],
+                        [ 2, 8, 10 ]
+                                              ];
+
+            var result = new List<int>(input.Count);
+            var minHeap = new PriorityQueue<Tuple<int, int, int>, int>();
+            for (int i = 0; i < input.Count; i++)
+            {
+                minHeap.Enqueue(Tuple.Create(i, 0, input[i][0]), input[i][0]);
+            }
+
+            while (minHeap.Count > 0)
+            {
+                var item = minHeap.Dequeue();
+
+                result.Add(item.Item3);
+                int arrIndex = item.Item1;
+                int eleIndex = item.Item2+1;
+                if (eleIndex < input[arrIndex].Count)
+                {
+                    int val = input[arrIndex][eleIndex];
+                    Console.WriteLine($"{arrIndex} - {eleIndex} - {val}");
+                    minHeap.Enqueue(Tuple.Create(arrIndex, eleIndex, val), val);
+                }
+            }
+
+            result.ForEach(num => Console.Write($" {num} "));
+        }
+        #endregion
+
         /// <summary>
         /// Given an array A of N integers, convert that array into a min heap and return the array.
         /// NOTE: A min heap is a binary tree where every node has a value less than or equal to its children.

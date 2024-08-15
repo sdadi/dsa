@@ -190,6 +190,16 @@ namespace _1Advanced
             }
             Console.WriteLine($"[{n1},{n2}]");
         }
+
+        #region Sum of SubArray OR
+        /// <summary>
+        /// You are given an array of integers A of size N.
+        /// he value of a subarray is defined as BITWISE OR of all elements in it.
+        /// Return the sum of value of all subarrays of A % 109 + 7.
+        /// Problem Constraints
+        /// 1 <= N <= 10^5
+        /// 1 <= A[i] <= 10^8
+        /// </summary>
         public static void SubArrayORSum()
         {
             //List<int> A = [1, 2, 3, 4, 5];//71
@@ -203,25 +213,25 @@ namespace _1Advanced
             long mod = 1000000007;
             long sacount = (A.Count * (A.Count + 1)) / 2;
 
-            for(int i =0;i< 32; i++)
+            for (int i = 0; i < 32; i++)
             {
                 long count = 0;
                 long sasum = 0;
-                for(int j =0;j< A.Count; j++)
+                for (int j = 0; j < A.Count; j++)
                 {
-                    if ((A[j]&(1<<i)) == 0)
+                    if ((A[j] & (1 << i)) == 0)
                     {
                         count++;
                     }
                     else
                     {
-                        sasum += (count*(count+1))/2;
+                        sasum += (count * (count + 1)) / 2;
                         count = 0;
                     }
                 }
                 sasum += (count * (count + 1)) / 2;
                 sasum = sacount - sasum;
-                ans = (ans+ (sasum*(1<<i)))%mod;
+                ans = (ans + (sasum * (1 << i))) % mod;
             }
             Console.WriteLine((int)ans);
 
@@ -238,7 +248,8 @@ namespace _1Advanced
             //}
 
             //Console.WriteLine((int)ans);
-        }
+        } 
+        #endregion
         public static void SingleElementThriceArray()
         {
             List<int> A = [1, 2, 4, 3, 3, 2, 2, 3, 1, 1];//4
