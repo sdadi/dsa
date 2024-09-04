@@ -15,7 +15,7 @@ namespace _4Advanced
             //A = [2, 3, 0, 1, 4];//2
             //A = [0];//0
             //A = [1];//0
-            A = [1, 1, 1, 1];//3
+            //A = [1, 1, 1, 1];//3
 
             if (A == null || A[0] == 0) { Console.WriteLine(0); return;  }
 

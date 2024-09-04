@@ -287,7 +287,7 @@ namespace _3Advanced
                     current.child = line2.ListToDoubleNode();
                 else if (current.val == 4)
                     current.child = line3.ListToDoubleNode();
-                else if (current.val == 20)
+                else if (current.val == 20 && current.next.val == 20)
                     current.child = line4.ListToDoubleNode();
                 else if (current.val == 20)
                     current.child = line5.ListToDoubleNode();

@@ -13,7 +13,7 @@
             //_2DArray.AddSpiralMatrix();
             //_2DArray.MinSwapsLessThanBTogether();
 
-            _3_ArrayMergeIntervals.FirstMissingPositive();
+            //_3_ArrayMergeIntervals.FirstMissingPositive();
             //_3_ArrayMergeIntervals.MergeIntervels();
             //_3_ArrayMergeIntervals.NumberOf1s();
             //_3_ArrayMergeIntervals.NextPermutation();
@@ -76,6 +76,8 @@
             //_11PrimeNumber.PrimeSum();
             //_11PrimeNumber.CountOfDivisors();
             //_11PrimeNumber.LuckyNumber();
+
+            Arrays1D.MaxDistance(); 
         }
     }
 }

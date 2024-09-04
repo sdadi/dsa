@@ -22,7 +22,7 @@
             //LinkedList2.AddTwoNumberofLists();
 
             //LinkedList2.ReorderLinkedList();
-            LinkedList2.SwapNodesInPairs();
+            //LinkedList2.SwapNodesInPairs();
 
             //LinkedLIst3.IntersectionOfLinkedList();
             //LinkedLIst3.LRUCheck();
@@ -82,12 +82,15 @@
             //Trees4.DistanceBetween2NodesInBST();
             //Trees4.SumOfCommonNodesInBST();
 
-            Trees5.EqualTreePartition();
+            //Trees5.EqualTreePartition();
             //Trees5.PathSum();
             //Trees5.DiameterOfBST();
 
             //Trees5.IdenticalBinaryTrees();
             //Trees5.SumBinaryTreeOrNot();
+
+            Parent p = new Child();
+            p.SomeMethod();
         }
 
         static void LinkedListMethods()
@@ -205,5 +208,18 @@
 
         }
     }
-
+    public class Parent
+    {
+        public virtual void SomeMethod()
+        {
+            Console.WriteLine("Parent.SomeMethod");
+        }
+    }
+    public class Child:Parent
+    {
+        public new void SomeMethod()
+        {
+            Console.WriteLine("Child.SomeMethod");
+        }
+    }
 }

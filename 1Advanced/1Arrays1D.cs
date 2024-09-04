@@ -119,5 +119,47 @@ namespace _1Advanced
             foreach (int i in A)
                 Console.Write(i + "  ");
         }
+
+        /// <summary>
+        /// You are given m arrays, where each array is sorted in ascending order.
+        /// You can pick up two integers from two different arrays(each array picks one) and calculate the distance.
+        /// We define the distance between two integers a and b to be their absolute difference |a - b|.
+        /// Return the maximum distance.
+        /// </summary>
+        /// <param name="arrays"></param>
+        /// <returns></returns>
+        public static void MaxDistance()
+        {
+            IList<IList<int>> arrays = [[1, 2, 3],[4, 5],[1, 2, 3]];
+            //arrays = [[1], [1]];
+            arrays = [[1, 4], [0, 5]];
+            arrays = [[-1, 1], [-3, 1, 4], [-2, -1, 0, 2]];
+            arrays = [[-8,-7,-7,-5,1,1,3,4],[-2],[-10,-10,-7,0,1,3],[2]];
+
+            int max = int.MinValue, min = int.MaxValue;
+            //int minR = 0, maxR = 0;
+            int result = 0;
+            if (arrays.Count == 2)
+            {
+                result =  Math.Max(Math.Abs(arrays[1][arrays[1].Count - 1] - arrays[0][0]), Math.Abs(arrays[0][arrays[0].Count - 1] - arrays[1][0]));
+                Console.WriteLine(result);
+                return;
+            }
+            var mm = new List<List<int>>();
+
+            for (int i =0;i< arrays.Count;i++  )
+            {
+                mm.Add(new List<int> { arrays[i][0], arrays[i][arrays[i].Count - 1] });
+            }
+            result = Math.Max(Math.Abs(arrays[0][0] - arrays[arrays.Count - 1][arrays[arrays.Count-1].Count-1]),
+                Math.Abs(arrays[0][arrays[0].Count - 1] - arrays[arrays.Count - 1][0]));
+            for(int i=1;i< mm.Count;i++ )
+            {
+                result = Math.Max(result, Math.Max(Math.Abs(mm[i][0]- mm[i - 1][mm[i].Count - 1]),
+                    Math.Abs(mm[i][mm[i].Count - 1]- mm[i - 1][0])));
+            }
+            //result = (min == int.MaxValue || max == int.MinValue) ? 0 : max - min;
+            Console.WriteLine( result);
+        }
     }
 }

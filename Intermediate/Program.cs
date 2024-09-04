@@ -5,6 +5,9 @@ namespace Intermediate
     {
         static void Main(string[] args)
         {
+
+            Contest6_4.MatrixMinPathSum();
+            return;
             //Contest1Run();
             //Contest2Run();
 
@@ -34,6 +37,12 @@ namespace Intermediate
             /*mock interview 
              * https://docs.google.com/document/d/19mWysmys4DdFfUtd97tCfiTziQuuubAxvSVRqvC2F5s/edit#heading=h.jiajinych0wd
              */
+
+
+            //Contest6.NumbersDivisibleLessThanD();
+            //Contest6.detectCycle();
+            //Contest6.groupoddevenindicesLinkedList();
+            //Contest6.minimumSemesters();
 
         }
     }
