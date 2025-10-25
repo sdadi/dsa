@@ -66,21 +66,28 @@ namespace _2Advanced
         /// <summary>
         /// Given an array of integers A. If i < j and A[i] > A[j], then the pair (i, j) is called an inversion of A. 
         /// Find the total number of inversions of A modulo (109 + 7).
-        /// 1 <= length of the array <= 105
-        /// 1 <= A[i] <= 109
+        /// 1 <= length of the array <= 10^5
+        /// 1 <= A[i] <= 10^9
         /// </summary>
         public static void InverseCountRun()
         {
-            //List<int> A = [1, 3, 2];
-            //List<int> A = [3, 4, 1, 2];
-            List<int> A = [45, 10, 15, 25, 50];
+            //List<int> A = [1, 3, 2];//1
+            List<int> A = [3, 4, 1, 2];//4
+            //List<int> A = [45, 10, 15, 25, 50];//3
+            Console.WriteLine("Input array");
+            ArrayExtension.PrintArray(A);
+            Console.WriteLine("----------------------");
+            MergeSort(A,0,A.Count - 1);
+            ArrayExtension.PrintArray(A);
+            Console.WriteLine($"Inversion Count: {inversionCount}");
         }
+        private static int inversionCount = 0;
 
         public static void MergeSortRun()
         {
-            //List<int> A = [1, 3, 2];
+            List<int> A = [1, 3, 2];
             //List<int> A = [3, 4, 1, 2];
-            List<int> A = [45, 10, 15, 25, 50];
+            //List<int> A = [45, 10, 15, 25, 50];
             Console.WriteLine("Input array");
             ArrayExtension.PrintArray(A);
 
@@ -100,6 +107,7 @@ namespace _2Advanced
         }
         private static void MergeSortedArray(List<int> A,int l, int mid, int r)
         {
+            int mod = 1000000007;
             var lArray = new List<int>();
             var rArray = new List<int>();
 
@@ -112,26 +120,27 @@ namespace _2Advanced
                 rArray.Add(A[i]);
             }
 
-            int k = l, l_new = 0, r_new = 0;
+            int start = l, l_new = 0, r_new = 0;
 
             while(l_new < (lArray.Count) && r_new < (rArray.Count))
             {
-                if (lArray[l_new] >= rArray[r_new])
+                if (lArray[l_new] <= rArray[r_new])
                 {
-                    A[k++] = lArray[l_new++];
+                    A[start++] = lArray[l_new++];
                 }
                 else
                 {
-                    A[k++] = rArray[r_new++];
+                    A[start++] = rArray[r_new++];
+                    inversionCount = (inversionCount%mod + (lArray.Count - l_new)%mod)%mod;
                 }
             }
             while(l_new < lArray.Count)
             {
-                A[k++] = lArray[l_new++];
+                A[start++] = lArray[l_new++];
             }
             while(r_new < rArray.Count)
             {
-                A[k++] = rArray[r_new++];
+                A[start++] = rArray[r_new++];
             }
         }
 
