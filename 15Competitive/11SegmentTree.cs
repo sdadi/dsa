@@ -129,12 +129,12 @@
             var result = new List<int>();
             var tree = new List<int>(Enumerable.Repeat(int.MinValue, A.Count * 4));
             Helpers.ArrayExtension.PrintArray<int>(tree);
-            BuildSegmentTreeMax(0, 0, A.Count - 1, A, tree);
+            //BuildSegmentTreeMax(0, 0, A.Count - 1, A, tree);
             Helpers.ArrayExtension.PrintArray<int>(tree);
             for (int i = 0; i < B.Count; i++) {
                 int left = B[i][0];
                 int right = B[i][1];
-                result.Add(QuerySegmentTreeMax(0, 0, A.Count - 1, left, right, tree));
+                //result.Add(QuerySegmentTreeMax(0, 0, A.Count - 1, left, right, tree));
             }
             Helpers.ArrayExtension.PrintArray<int>(tree);
             Console.WriteLine("Result: -----------------------------------");

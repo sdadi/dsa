@@ -97,7 +97,6 @@
 
         #region 2. Bridges in graph
         ///Given an undirected graph having A nodes. A matrix B of size M x 2 is given which represents the M edges such that there is a edge between node B[i][0] and node B[i][1].
-
         ///        You have to find all the bridges in the graph.
         ///        An edge in an undirected connected graph is a bridge if removing it disconnects the graph.For a disconnected undirected graph, the definition is similar, a bridge is an edge removing which increases the number of disconnected components.
         ///        Return an two-dimensional arrays which contains all the edges that are bridges.
@@ -117,7 +116,7 @@
         ///Nodes are numbered from 1 to A.
         ///Your solution will run on multiple test cases. If you are using global variables make sure to clear them.
         ///Problem Constraints
-        ///1 <= A <= 105
+        ///1 <= A <= 10^5
         ///1 <= B[i][0], B[i][1] <= A
         public void BridgesInGraph() {
             int A = 5;
@@ -128,8 +127,68 @@
                         ,[5, 2]
                         ,[3, 1] ];//[ [2,5] ]
 
+            A = 5;
+            B = [  [1, 2],
+                    [2, 3],
+                    [3, 4],
+                    [4, 5] ];// [   [1, 2], [2, 3], [3, 4], [4, 5] ]
+            A = 7;
+            B = [[4, 6], [5, 6], [1, 6], [1, 4], [3, 4], [1, 7], [1, 3], [4, 5]];// [ [1,7] ]
+
+            var edges = new Dictionary<int, List<int>>();
+            var visited = new List<bool>(Enumerable.Repeat(false, A + 1));
+            var marked = new List<bool>(Enumerable.Repeat(false, A + 1));
+            var entryTime = new List<int>(Enumerable.Repeat(0, A + 1));
+            var minTime = new List<int>(Enumerable.Repeat(0, A + 1));
+            var bridges = new List<List<int>>();
 
 
+            for (int i = 0; i <= A; i++) {
+                edges.Add(i, new List<int>());
+            }
+            for (int i = 0; i < B.Count; i++) {
+                if (!edges.ContainsKey(B[i][0]))
+                    edges.Add(B[i][0], new List<int>());
+                edges[B[i][0]].Add(B[i][1]);
+
+                if (!edges.ContainsKey(B[i][1]))
+                    edges.Add(B[i][1], new List<int>());
+                edges[B[i][1]].Add(B[i][0]);
+
+            }
+
+            for (int i=1;i<=A;i++) {
+                if(!visited[i]) {
+                    DFSBridges(i, -1, edges, visited, entryTime, minTime, bridges);
+                }
+            }
+
+
+            Console.WriteLine();
+            foreach(var bridge in bridges) {
+                Console.WriteLine($"[{bridge[0]}, {bridge[1]}]");
+            }
+            for(int i=0;i<marked.Count;i++) {
+                if (marked[i]) Console.Write($"{i} ");
+            }
+        }
+
+        private void DFSBridges(int node, int parent, Dictionary<int, List<int>> edges, List<bool> visited, List<int> entryTime, List<int> minTime, List<List<int>> bridges) {
+            visited[node] = true;
+            minTime[node] = entryTime[node] = timer++;
+            foreach(var neighbor in edges[node]) {
+                if (neighbor == parent) continue;
+
+                if (visited[neighbor]) {
+                    minTime[node] = Math.Min(minTime[node], entryTime[neighbor]);
+                } else {
+                    DFSBridges(neighbor, node, edges, visited, entryTime, minTime, bridges);
+                    minTime[node] = Math.Min(minTime[node], minTime[neighbor]);
+                    if (minTime[neighbor] > entryTime[node]) {
+                        bridges.Add(new List<int>() { Math.Min(node, neighbor), Math.Max(node, neighbor) });
+                    }
+                }
+            }
         }
         #endregion
 

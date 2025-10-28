@@ -1,7 +1,7 @@
 ﻿namespace _15Competitive {
         internal class Program {
         static void Main(string[] args) {
-            //Class1();
+            Class1();
             //Class11();
             //Class13();
         }
@@ -20,8 +20,9 @@
         static void Class1() {
 
             _1ArticulationPointsBridges obj = new _1ArticulationPointsBridges();
+            //obj.ArticulationPoints();
 
-            obj.ArticulationPoints();
+            obj.BridgesInGraph();
         }
     }
 }
