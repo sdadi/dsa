@@ -18,9 +18,16 @@ namespace _2Advanced
             List<int> A = [1, 3, 2, 3, 1];//2
 
             //List<int> A = [4, 1, 2];//1
+            A = [14046, 57239, 78362, 99387, 27609, 55100, 65536, 62099, 40820, 33056, 88380, 78549, 57512, 33137, 81212, 32365, 42276, 65368, 52459, 74924, 25355, 76044, 78056, 45190, 94365, 58869, 20611];//51
 
+            ArrayExtension.PrintArray(A);
+
+            MergeSort(A, 0, A.Count - 1);
+
+            Console.WriteLine($"Reverse Pair Count: {reversePairCount}");
 
         }
+        private static int reversePairCount = 0;
         /// <summary>
         /// Given an array A. Sort this array using Count Sort Algorithm and return the sorted array.
         /// 1 <= |A| <= 10^5
@@ -103,8 +110,20 @@ namespace _2Advanced
             MergeSort(A, l, mid);//left sort
             MergeSort(A, mid + 1, r);//right sort
 
+            CountReversePairs(A, l, mid, r); //count reverse pairs
+
             MergeSortedArray(A, l, mid, r); //merge sorted left and right parts
         }
+
+        private static void CountReversePairs(List<int> a, int l, int mid, int r) {
+            int j = mid + 1;
+            for(int i =l; i <= mid; i++) {
+                while (j <= r && (long)a[i] > 2L * (long)a[j])
+                    j++;
+                reversePairCount += (j - (mid + 1));
+            }
+        }
+
         private static void MergeSortedArray(List<int> A,int l, int mid, int r)
         {
             int mod = 1000000007;
@@ -122,8 +141,7 @@ namespace _2Advanced
 
             int start = l, l_new = 0, r_new = 0;
 
-            while(l_new < (lArray.Count) && r_new < (rArray.Count))
-            {
+            while(l_new < (lArray.Count) && r_new < (rArray.Count)) {
                 if (lArray[l_new] <= rArray[r_new])
                 {
                     A[start++] = lArray[l_new++];

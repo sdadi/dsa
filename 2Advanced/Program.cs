@@ -6,7 +6,8 @@ namespace _2Advanced {
             //Sorting1.CountSort();
             //Sorting1.MergeSortRun();
             //Sorting1.MergeSortedArrayRun();
-            Sorting1.InverseCountRun();
+            //Sorting1.InverseCountRun();
+            Sorting1.ReversePairs();
 
             //Sorting2.LargestNumber();
             //Sorting2.QuickSortRun();
